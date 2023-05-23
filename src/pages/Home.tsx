@@ -1,5 +1,7 @@
 import { Box, Button, Container, Divider, Typography } from "@mui/material";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -7,6 +9,15 @@ export default function Home() {
     event.preventDefault();
     navigate("/recomm");
   };
+  let uuid: string | null;
+
+  useEffect(() => {
+    uuid = localStorage.getItem("uuid");
+    if (!uuid) {
+      uuid = uuidv4();
+      localStorage.setItem("uuid", uuid!);
+    }
+  }, []);
 
   return (
     <Box

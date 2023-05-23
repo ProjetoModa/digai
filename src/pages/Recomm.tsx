@@ -5,17 +5,12 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import ClothItem from "../components/ClothItem";
 
 export default function Recomm() {
-  const navigate = useNavigate();
-  
   const items = [
     "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
     "Structured_Mesh_Skater_Skirt/img_00000027.jpg",
-    "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
-    "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
     "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
     "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
     "Smocked_Bandana_Print_Skirt/img_00000016.jpg",

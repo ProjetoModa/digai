@@ -6,6 +6,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "./theme.ts";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Recomm from "./pages/Recomm.tsx";
+import PartB from "./pages/PartB.tsx";
+import Chat from "./pages/Chat.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
   {
     path: "/recomm",
     element: <Recomm />,
+  },
+  {
+    path: "/part-b",
+    element: <PartB />,
+  },
+  {
+    path: "/chat",
+    element: <Chat />,
   },
 ]);
 
