@@ -1,15 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+import Home from "./pages/Home.tsx";
 import "./index.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "./theme.ts";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Recomm from "./pages/Recomm.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
+  },
+  {
+    path: "/recomm",
+    element: <Recomm />,
   },
 ]);
 
