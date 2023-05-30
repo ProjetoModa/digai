@@ -1,7 +1,17 @@
 import { Box, Button, Container, Divider, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function PartB() {
+  let uuid: string | null;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    uuid = localStorage.getItem("uuid");
+    if (!uuid) {
+      navigate("/");
+    }
+  }, []);
   return (
     <Box
       className="background"

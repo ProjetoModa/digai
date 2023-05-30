@@ -7,15 +7,16 @@ export default function Home() {
   const navigate = useNavigate();
   const startSession = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    navigate("/recomm");
+    uuid = uuidv4();
+    localStorage.setItem("uuid", uuid);
+    navigate("/part-a");
   };
   let uuid: string | null;
 
   useEffect(() => {
     uuid = localStorage.getItem("uuid");
     if (!uuid) {
-      uuid = uuidv4();
-      localStorage.setItem("uuid", uuid!);
+      navigate("/");
     }
   }, []);
 

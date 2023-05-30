@@ -6,8 +6,10 @@ import {
   Typography,
 } from "@mui/material";
 import ClothItem from "../components/ClothItem";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Recomm() {
+export default function PartA() {
   const items = [
     "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
     "Structured_Mesh_Skater_Skirt/img_00000027.jpg",
@@ -18,6 +20,16 @@ export default function Recomm() {
     "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
     "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
   ];
+  let uuid: string | null;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    uuid = localStorage.getItem("uuid");
+    if (!uuid) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <Box component="main">
       <Box component="header" className="header" sx={{ textAlign: "center" }}>
