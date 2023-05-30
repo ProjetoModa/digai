@@ -1,22 +1,31 @@
 import { Box, Button, Container, Divider, Typography } from "@mui/material";
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import ChatbotService from "../services/chatbotService";
 
 export default function Home() {
   const navigate = useNavigate();
-  const startSession = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const location = useLocation();
+  const startSession = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     uuid = uuidv4();
+    await ChatbotService.init(uuid);
+    const session = await ChatbotService.navigate(uuid, "/part-a")
     localStorage.setItem("uuid", uuid);
+    localStorage.setItem("state", JSON.stringify(session.state));
     navigate("/part-a");
   };
   let uuid: string | null;
 
   useEffect(() => {
     uuid = localStorage.getItem("uuid");
-    if (!uuid) {
-      navigate("/");
+    if(!uuid){
+      return;
+    }
+    const state = JSON.parse(localStorage.getItem("state") || "{}");
+    if(state && state['page'] !== location.pathname){
+      navigate(state['page']);
     }
   }, []);
 
