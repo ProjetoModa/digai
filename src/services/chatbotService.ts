@@ -18,8 +18,18 @@ const ChatbotService = {
 
   chat: (id: string) => {},
   entropy: () => {},
-  like: () => {},
-  dislike: () => {},
+  like: async (id: string, product: string) => {
+    return await api(chatbotURL + "/like", {
+      method: "POST",
+      body: JSON.stringify({ id: id, product: product }),
+    });
+  },
+  dislike: async (id: string, product: string) => {
+    return await api(chatbotURL + "/dislike", {
+      method: "POST",
+      body: JSON.stringify({ id: id, product: product }),
+    });
+  },
   finish: () => {},
 };
 

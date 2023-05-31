@@ -13,7 +13,7 @@ export default function Home() {
     await ChatbotService.init(uuid);
     const session = await ChatbotService.navigate(uuid, "/part-a")
     localStorage.setItem("uuid", uuid);
-    localStorage.setItem("state", JSON.stringify(session.state));
+    localStorage.setItem("state", session.state);
     navigate("/part-a");
   };
   let uuid: string | null;

@@ -1,49 +1,113 @@
-import { Box, Button, Container, Divider, Typography } from "@mui/material";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import ClothItem from "../components/ClothItem";
+import ChatArea, { Message } from "../components/ChatArea";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import RecommenderService from "../services/recommenderService";
+import ChatbotService from "../services/chatbotService";
 
 export default function PartB() {
-  let uuid: string | null;
+  let uuid: string | null = null;
+  let [state, setState] = useState<any>(null);
+  const [items, setItems] = useState<string[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
+    let ignore = false;
     uuid = localStorage.getItem("uuid");
-    if (!uuid) {
+    const state = JSON.parse(localStorage.getItem("state") || "null");
+    if (!uuid || !state) {
       navigate("/");
+    } else {
+      setState((_: any) => state);
+      setItems((_) => []);
+      RecommenderService.recomm(state).then((newItems) => {
+        if (!ignore) {
+          setItems((at) => {
+            console.log(at);
+            return at.concat(newItems.products);
+          });
+        }
+      });
     }
+    return () => {
+      ignore = true;
+    };
   }, []);
   return (
-    <Box
-      className="background"
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-      }}
-    >
+    <Box component="main">
+      <Box component="header" className="header" sx={{ textAlign: "center" }}>
+        <Container sx={{ padding: 4 }}>
+          <Typography variant="h5">
+            Please, let us know all that you like and dislike, and if you find a
+            skirt that you want to buy, just click in the corresponding shopping
+            cart.
+          </Typography>
+        </Container>
+      </Box>
       <Container>
-        <Box component="main" sx={{ textAlign: "center" }}>
-          <Typography variant="h4">
-          END OF PART A
-          </Typography>
-          <Divider sx={{ margin: 2 }} />
-          <Typography>
-          Thank you for your time. Please go to Part B of the experiment by clicking on the button below. There you will find the same experiment as before, but with a chatbot. Feel free to use it.
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: 2,
-              gap: 2,
-            }}
-          >
-            <Button variant="contained" component={Link} to={"/chat"}>
-              Start Part B
-            </Button>
-          </Box>
-        </Box>
+        <Grid container>
+          <Grid item xs={12} md={8}>
+            <Grid container padding={2} spacing={2}>
+              {items.map((item, index) => (
+                <Grid item key={index} xs={12} md={3}>
+                  <ClothItem
+                    onLike={(liked) => {
+                      if (liked) {
+                        ChatbotService.like(state.uuid, item).then(
+                          (session) => {
+                            setState((at: any) => {
+                              localStorage.setItem("state", session["state"]);
+                              return {
+                                ...at,
+                                state: session.state,
+                              };
+                            });
+                          }
+                        );
+                      } else {
+                        ChatbotService.dislike(state.uuid, item).then(
+                          (session) => {
+                            setState((at: any) => {
+                              localStorage.setItem("state", session.state);
+                              return {
+                                ...at,
+                                state: session.state,
+                              };
+                            });
+                          }
+                        );
+                      }
+                    }}
+                    onShop={() => {
+                      console.log(`Shop ${item}`);
+                    }}
+                    id={item}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+
+            <Box sx={{ textAlign: "center", margin: 2 }}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  RecommenderService.recomm(state).then((newItems) => {
+                    setItems((at) => {
+                      return at.concat(newItems.products);
+                    });
+                  });
+                }}
+              >
+                More Skirts Recommendations
+              </Button>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <ChatArea messages={messages} />
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

@@ -1,33 +1,37 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import ClothItem from "../components/ClothItem";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import RecommenderService from "../services/recommenderService";
+import ChatbotService from "../services/chatbotService";
 
 export default function PartA() {
-  const items = [
-    "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
-    "Structured_Mesh_Skater_Skirt/img_00000027.jpg",
-    "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
-    "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
-    "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
-    "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
-    "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
-    "Smocked_Bandana_Print_Skirt/img_00000016.jpg",
-  ];
-  let uuid: string | null;
+  let uuid: string | null = null;
+  let [state, setState] = useState<any>(null);
+  const [items, setItems] = useState<string[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
+    let ignore = false;
     uuid = localStorage.getItem("uuid");
-    if (!uuid) {
+    const state = JSON.parse(localStorage.getItem("state") || "null");
+    if (!uuid || !state) {
       navigate("/");
+    } else {
+      setState((_: any) => state);
+      setItems((_) => []);
+      RecommenderService.recomm(state).then((newItems) => {
+        if (!ignore) {
+          setItems((at) => {
+            console.log(at);
+            return at.concat(newItems.products);
+          });
+        }
+      });
     }
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   return (
@@ -47,9 +51,13 @@ export default function PartA() {
             <Grid item key={index} xs={12} md={3}>
               <ClothItem
                 onLike={(liked) => {
-                  console.log(`Liked ${liked} ${item}`);
+                  if (liked) {
+                    ChatbotService.like(state.uuid, item);
+                  } else {
+                    ChatbotService.dislike(state.uuid, item);
+                  }
                 }}
-                onShop={()=>{
+                onShop={() => {
                   console.log(`Shop ${item}`);
                 }}
                 id={item}
@@ -58,7 +66,18 @@ export default function PartA() {
           ))}
         </Grid>
         <Box sx={{ textAlign: "center", margin: 2 }}>
-          <Button variant="contained">More Skirts Recommendations</Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              RecommenderService.recomm(state).then((newItems) => {
+                setItems((at) => {
+                  return at.concat(newItems.products);
+                });
+              });
+            }}
+          >
+            More Skirts Recommendations
+          </Button>
         </Box>
       </Container>
     </Box>
