@@ -17,7 +17,6 @@ const ChatbotService = {
   },
 
   chat: (id: string) => {},
-  entropy: () => {},
   like: async (id: string, product: string) => {
     return await api(chatbotURL + "/like", {
       method: "POST",
