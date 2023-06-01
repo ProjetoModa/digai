@@ -11,6 +11,7 @@ import InterAB from "./pages/InterAB.tsx";
 import InterBC from "./pages/InterBC.tsx";
 import PartC from "./pages/PartC.tsx";
 import End from "./pages/End.tsx";
+import Questions from "./pages/Questions.tsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/part-b",
     element: <PartB />,
+  },
+  {
+    path: "/questions",
+    element: <Questions />,
   },
   {
     path: "/inter-bc",

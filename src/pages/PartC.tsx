@@ -16,7 +16,7 @@ export default function PartC() {
     RecommenderService.recomm(state).then((newItems) => {
       setItems((at) => {
         const newList = at.concat(newItems.products);
-        localStorage.setItem("itemsB", JSON.stringify(newList));
+        localStorage.setItem("itemsC", JSON.stringify(newList));
         return newList;
       });
     });
@@ -54,7 +54,7 @@ export default function PartC() {
       navigate("/");
     } else {
       setState((_: any) => state);
-      const lastItems = localStorage.getItem("itemsB");
+      const lastItems = localStorage.getItem("itemsC");
       if (lastItems) {
         setItems((_) => JSON.parse(lastItems));
       } 
