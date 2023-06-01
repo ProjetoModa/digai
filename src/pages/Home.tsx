@@ -1,17 +1,42 @@
-import { Box, Button, Container, Divider, Typography } from "@mui/material";
-import { useEffect } from "react";
+import {
+  Box,
+  Button,
+  Checkbox,
+  Container,
+  Divider,
+  FormControlLabel,
+  Typography,
+} from "@mui/material";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import ChatbotService from "../services/chatbotService";
+import AlertDialog from "../components/AlertDialog";
 
 export default function Home() {
+  const [consent, giveConsent] = useState<boolean>(false);
+  const [dialog, setDialog] = useState({
+    open: false,
+    title: "",
+    description: "",
+  });
   const navigate = useNavigate();
   const location = useLocation();
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    giveConsent(event.target.checked);
+  };
   const startSession = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    if (!consent) {
+      setDialog({
+        open: true,
+        title: "Consent is required.",
+        description: "To continue, please check the consent box",
+      });
+    }
     uuid = uuidv4();
     await ChatbotService.init(uuid);
-    const session = await ChatbotService.navigate(uuid, "/part-a")
+    const session = await ChatbotService.navigate(uuid, "/part-a");
     localStorage.setItem("uuid", uuid);
     localStorage.setItem("state", session.state);
     navigate("/part-a");
@@ -20,12 +45,12 @@ export default function Home() {
 
   useEffect(() => {
     uuid = localStorage.getItem("uuid");
-    if(!uuid){
+    if (!uuid) {
       return;
     }
     const state = JSON.parse(localStorage.getItem("state") || "{}");
-    if(state && state['page'] !== location.pathname){
-      navigate(state['page']);
+    if (state && state["page"] !== location.pathname) {
+      navigate(state["page"]);
     }
   }, []);
 
@@ -59,6 +84,24 @@ export default function Home() {
               would "buy".
             </b>
           </Typography>
+          <FormControlLabel
+            control={<Checkbox checked={consent} onChange={handleChange} />}
+            label="By continuing with this survey you confirm that you are at least 18 years of age and that you consent to participate. If you do not consent to participate, please exit this survey or close your browser."
+          />
+
+          <AlertDialog
+            open={dialog.open}
+            title={dialog.title}
+            description={dialog.description}
+            onClose={() => {
+              setDialog({
+                open: false,
+                title: "",
+                description: "",
+              });
+            }}
+          />
+
           <Box
             sx={{
               display: "flex",
