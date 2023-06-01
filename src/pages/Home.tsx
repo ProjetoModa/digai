@@ -33,13 +33,14 @@ export default function Home() {
         title: "Consent is required.",
         description: "To continue, please check the consent box",
       });
+    } else {
+      const uuid = uuidv4();
+      await ChatbotService.init(uuid);
+      const session = await ChatbotService.navigate(uuid, "/part-a");
+      localStorage.setItem("uuid", uuid);
+      localStorage.setItem("state", session.state);
+      navigate("/part-a");
     }
-    uuid = uuidv4();
-    await ChatbotService.init(uuid);
-    const session = await ChatbotService.navigate(uuid, "/part-a");
-    localStorage.setItem("uuid", uuid);
-    localStorage.setItem("state", session.state);
-    navigate("/part-a");
   };
   let uuid: string | null;
 
@@ -84,7 +85,9 @@ export default function Home() {
               would "buy".
             </b>
           </Typography>
+
           <FormControlLabel
+            sx={{ margin: 2 }}
             control={<Checkbox checked={consent} onChange={handleChange} />}
             label="By continuing with this survey you confirm that you are at least 18 years of age and that you consent to participate. If you do not consent to participate, please exit this survey or close your browser."
           />
