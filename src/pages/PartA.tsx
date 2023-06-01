@@ -1,21 +1,21 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import ClothItem from "../components/ClothItem";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RecommenderService from "../services/recommenderService";
 import ChatbotService from "../services/chatbotService";
 
 export default function PartA() {
-  let uuid: string | null = null;
+  let uuid = useRef<string | null>(null);
   let [state, setState] = useState<any>(null);
   const [items, setItems] = useState<string[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     let ignore = false;
-    uuid = localStorage.getItem("uuid");
+    uuid.current = localStorage.getItem("uuid");
     const state = JSON.parse(localStorage.getItem("state") || "null");
-    if (!uuid || !state) {
+    if (!uuid.current || !state) {
       navigate("/");
     } else {
       setState((_: any) => state);
@@ -57,13 +57,36 @@ export default function PartA() {
               <ClothItem
                 onLike={(liked) => {
                   if (liked) {
-                    ChatbotService.like(state.uuid, item);
+                    ChatbotService.like(uuid.current!, item).then(
+                      (session) => {
+                        setState((at: any) => {
+                          localStorage.setItem("state", JSON.stringify(session.state));
+                          return {
+                            ...at,
+                            state: session.state,
+                          };
+                        });
+                      }
+                    );
                   } else {
-                    ChatbotService.dislike(state.uuid, item);
+                    ChatbotService.dislike(uuid.current!, item).then(
+                      (session) => {
+                        setState((at: any) => {
+                          localStorage.setItem("state", JSON.stringify(session.state));
+                          return {
+                            ...at,
+                            state: session.state,
+                          };
+                        });
+                      }
+                    );
                   }
                 }}
                 onShop={() => {
-                  console.log(`Shop ${item}`);
+                  ChatbotService.finish(uuid.current!, item).then((session) => {
+                    localStorage.setItem("state", JSON.stringify(session.state));
+                    navigate(session.state.page);
+                  });
                 }}
                 id={item}
               />

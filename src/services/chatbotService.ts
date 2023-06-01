@@ -34,7 +34,12 @@ const ChatbotService = {
       body: JSON.stringify({ id: id, product: product }),
     });
   },
-  finish: () => {},
+  finish: async (id: string, product: string) => {
+    return await api(chatbotURL + "/finish", {
+      method: "POST",
+      body: JSON.stringify({ id: id, product: product }),
+    });
+  },
 };
 
 export default ChatbotService;

@@ -99,10 +99,10 @@ export default function PartB() {
                   <ClothItem
                     onLike={(liked) => {
                       if (liked) {
-                        ChatbotService.like(state.uuid, item).then(
+                        ChatbotService.like(uuid.current!, item).then(
                           (session) => {
                             setState((at: any) => {
-                              localStorage.setItem("state", session["state"]);
+                              localStorage.setItem("state", JSON.stringify(session.state));
                               return {
                                 ...at,
                                 state: session.state,
@@ -111,10 +111,10 @@ export default function PartB() {
                           }
                         );
                       } else {
-                        ChatbotService.dislike(state.uuid, item).then(
+                        ChatbotService.dislike(uuid.current!, item).then(
                           (session) => {
                             setState((at: any) => {
-                              localStorage.setItem("state", session.state);
+                              localStorage.setItem("state", JSON.stringify(session.state));
                               return {
                                 ...at,
                                 state: session.state,
@@ -125,7 +125,10 @@ export default function PartB() {
                       }
                     }}
                     onShop={() => {
-                      console.log(`Shop ${item}`);
+                      ChatbotService.finish(uuid.current!, item).then((session) => {
+                        localStorage.setItem("state", JSON.stringify(session.state));
+                        navigate(session.state.page);
+                      });
                     }}
                     id={item}
                   />
