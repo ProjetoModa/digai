@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { Send } from "@mui/icons-material";
 import theme from "../theme";
-import { createRef, useEffect } from "react";
+import { createRef, useEffect, useState } from "react";
 
 export type Message = {
   self: boolean;
@@ -21,11 +21,23 @@ export type Message = {
 
 export type ChatAreaProps = {
   messages: Message[];
+  onMessage: (utterance: string) => void;
 };
 
-export default function ChatArea({ messages }: ChatAreaProps) {
+export default function ChatArea({ messages, onMessage }: ChatAreaProps) {
+  const [text, setText] = useState("");
   const lastMessage = createRef<HTMLDivElement>();
-  useEffect(()=>{lastMessage.current?.scrollIntoView({ behavior: 'smooth' })},[messages]);
+  useEffect(() => {
+    lastMessage.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+  const handleSend = () => {
+    if (text) {
+      onMessage(text);
+    }
+  };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setText(event.target.value);
+  }
   return (
     <Card
       variant="outlined"
@@ -40,7 +52,7 @@ export default function ChatArea({ messages }: ChatAreaProps) {
     >
       <CardHeader title="Chat" subheader={<Divider />} />
       <CardContent sx={{ flex: 1, height: "100%", overflowY: "scroll" }}>
-        <List sx={{  }}>
+        <List sx={{}}>
           {messages.map((message, index) => (
             <ListItem key={index}>
               <ListItemText
@@ -65,9 +77,11 @@ export default function ChatArea({ messages }: ChatAreaProps) {
         <TextField
           sx={{ input: { color: "#000000" } }}
           fullWidth
+          value={text}
+          onChange={handleChange}
           InputProps={{
             endAdornment: (
-              <IconButton color="primary">
+              <IconButton color="primary" onClick={handleSend}>
                 <Send />
               </IconButton>
             ),
