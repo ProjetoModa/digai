@@ -19,15 +19,20 @@ export default function PartA() {
       navigate("/");
     } else {
       setState((_: any) => state);
-      setItems((_) => []);
-      RecommenderService.recomm(state).then((newItems) => {
-        if (!ignore) {
-          setItems((at) => {
-            console.log(at);
-            return at.concat(newItems.products);
-          });
-        }
-      });
+      const lastItems = localStorage.getItem("itemsA");
+      if (lastItems) {
+        setItems((_) => JSON.parse(lastItems));
+      } else {
+        RecommenderService.recomm(state).then((newItems) => {
+          if (!ignore) {
+            setItems((at) => {
+              const newList = at.concat(newItems.products);
+              localStorage.setItem("itemsA", JSON.stringify(newList));
+              return newList;
+            });
+          }
+        });
+      }
     }
     return () => {
       ignore = true;
@@ -71,7 +76,9 @@ export default function PartA() {
             onClick={() => {
               RecommenderService.recomm(state).then((newItems) => {
                 setItems((at) => {
-                  return at.concat(newItems.products);
+                  const newList = at.concat(newItems.products);
+                  localStorage.setItem("itemsA", JSON.stringify(newList));
+                  return newList;
                 });
               });
             }}
