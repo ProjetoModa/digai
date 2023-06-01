@@ -3,14 +3,14 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatbotService from "../services/chatbotService";
 
-export default function InterAB() {
+export default function InterBC() {
   let uuid = useRef<string | null>(null);
   const navigate = useNavigate();
 
-  const startPartB = async () => {
-    const session = await ChatbotService.navigate(uuid.current!, "/part-b");
+  const startPartC = async () => {
+    const session = await ChatbotService.navigate(uuid.current!, "/part-c");
     localStorage.setItem("state", session.state);
-    navigate("/part-b");
+    navigate("/part-c");
   };
 
   useEffect(() => {
@@ -31,12 +31,11 @@ export default function InterAB() {
     >
       <Container>
         <Box component="main" sx={{ textAlign: "center" }}>
-          <Typography variant="h4">END OF PART A</Typography>
+          <Typography variant="h4">END OF PART B</Typography>
           <Divider sx={{ margin: 2 }} />
           <Typography>
-            Thank you for your time. Please go to Part B of the experiment by
-            clicking on the button below. There you will find the same
-            experiment as before, but with a chatbot. Feel free to use it.
+            We are almost finished. Part C is rather quick and there will be no
+            more questionnaires.
           </Typography>
           <Box
             sx={{
@@ -46,8 +45,8 @@ export default function InterAB() {
               gap: 2,
             }}
           >
-            <Button variant="contained" onClick={startPartB}>
-              Start Part B
+            <Button variant="contained" onClick={startPartC}>
+              Start Part C
             </Button>
           </Box>
         </Box>
