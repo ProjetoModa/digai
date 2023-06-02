@@ -1,36 +1,32 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  CardHeader,
-  Paper,
-  Radio,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TextField,
-  styled,
-  tableCellClasses,
-} from "@mui/material";
-import { grey } from "@mui/material/colors";
-import { useState } from "react";
+import { Card, CardContent, CardHeader, TextField } from "@mui/material";
+import { red } from "@mui/material/colors";
 
 export type TextProps = {
+  id: string;
   title: string;
+  required?: boolean;
+  value: string;
+  onChange: (id: string, value: string) => void;
+  invalid: boolean;
 };
 
-export default function Text({ title }: TextProps) {
-  const [text, setText] = useState("");
-
+export default function Text({
+  id,
+  title,
+  required,
+  value,
+  onChange,
+  invalid,
+}: TextProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setText(event.target.value);
+    onChange(id, event.target.value.trim());
   };
   return (
     <Card sx={{ margin: 2 }}>
-      <CardHeader sx={{ color: "#000000" }} title={title} />
+      <CardHeader
+        sx={{ color: invalid ? red[400] : "#000000" }}
+        title={title + (required ? "*" : "")}
+      />
       <CardContent>
         <TextField
           sx={{ textarea: { color: "#000000" } }}
@@ -39,7 +35,7 @@ export default function Text({ title }: TextProps) {
           fullWidth
           rows={4}
           variant="filled"
-          value={text}
+          value={value || ""}
           onChange={handleChange}
         />
       </CardContent>

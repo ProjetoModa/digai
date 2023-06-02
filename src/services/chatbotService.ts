@@ -40,6 +40,12 @@ const ChatbotService = {
       body: JSON.stringify({ id: id, product: product }),
     });
   },
+  questionnaire: async (id: string, data: any, complete: boolean) => {
+    return await api(chatbotURL + "/questionnaire", {
+      method: "POST",
+      body: JSON.stringify({ id: id, data: data, complete: complete }),
+    });
+  },
 };
 
 export default ChatbotService;

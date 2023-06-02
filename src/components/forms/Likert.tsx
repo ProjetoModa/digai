@@ -1,5 +1,4 @@
 import {
-  Box,
   Card,
   CardContent,
   CardHeader,
@@ -14,8 +13,7 @@ import {
   styled,
   tableCellClasses,
 } from "@mui/material";
-import { grey } from "@mui/material/colors";
-import { useState } from "react";
+import { grey, red } from "@mui/material/colors";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -37,22 +35,36 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export type LikertProps = {
+  id: string;
   title: string;
+  required?: boolean;
+  value: { a: string; b: string };
+  onChange: (id: string, value: { a: string; b: string }) => void;
+  invalid: boolean;
 };
 
-export default function Likert({ title }: LikertProps) {
-  const [partA, setPartA] = useState("");
-  const [partB, setPartB] = useState("");
-
+export default function Likert({
+  id,
+  title,
+  required,
+  value,
+  onChange,
+  invalid,
+}: LikertProps) {
   const handleA = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPartA(event.target.value);
+    const newData = { ...value, a: event.target.value };
+    onChange(id, newData);
   };
   const handleB = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPartB(event.target.value);
+    const newData = { ...value, b: event.target.value };
+    onChange(id, newData);
   };
   return (
-    <Card sx={{margin: 2}}>
-      <CardHeader sx={{color: "#000000"}} title={title} />
+    <Card sx={{ margin: 2 }}>
+      <CardHeader
+        sx={{ color: invalid ? red[400] : "#000000" }}
+        title={title + (required ? "*" : "")}
+      />
       <CardContent>
         <TableContainer component={Paper}>
           <Table>
@@ -77,7 +89,7 @@ export default function Likert({ title }: LikertProps) {
                 <StyledTableCell sx={{ width: "16%" }}>Part A</StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partA === "1"}
+                    checked={value?.a === "1"}
                     onChange={handleA}
                     value="1"
                     name="partA"
@@ -86,7 +98,7 @@ export default function Likert({ title }: LikertProps) {
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partA === "2"}
+                    checked={value?.a === "2"}
                     onChange={handleA}
                     value="2"
                     name="partA"
@@ -95,7 +107,7 @@ export default function Likert({ title }: LikertProps) {
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partA === "3"}
+                    checked={value?.a === "3"}
                     onChange={handleA}
                     value="3"
                     name="partA"
@@ -104,7 +116,7 @@ export default function Likert({ title }: LikertProps) {
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partA === "4"}
+                    checked={value?.a === "4"}
                     onChange={handleA}
                     value="4"
                     name="partA"
@@ -113,7 +125,7 @@ export default function Likert({ title }: LikertProps) {
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partA === "5"}
+                    checked={value?.a === "5"}
                     onChange={handleA}
                     value="5"
                     name="partA"
@@ -125,7 +137,7 @@ export default function Likert({ title }: LikertProps) {
                 <StyledTableCell sx={{ width: "16%" }}>Part B</StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partB === "1"}
+                    checked={value?.b === "1"}
                     onChange={handleB}
                     value="1"
                     name="partB"
@@ -134,7 +146,7 @@ export default function Likert({ title }: LikertProps) {
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partB === "2"}
+                    checked={value?.b === "2"}
                     onChange={handleB}
                     value="2"
                     name="partB"
@@ -143,7 +155,7 @@ export default function Likert({ title }: LikertProps) {
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partB === "3"}
+                    checked={value?.b === "3"}
                     onChange={handleB}
                     value="3"
                     name="partB"
@@ -152,7 +164,7 @@ export default function Likert({ title }: LikertProps) {
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partB === "4"}
+                    checked={value?.b === "4"}
                     onChange={handleB}
                     value="4"
                     name="partB"
@@ -161,7 +173,7 @@ export default function Likert({ title }: LikertProps) {
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
-                    checked={partB === "5"}
+                    checked={value?.b === "5"}
                     onChange={handleB}
                     value="5"
                     name="partB"
