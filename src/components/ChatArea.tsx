@@ -33,6 +33,7 @@ export default function ChatArea({ messages, onMessage }: ChatAreaProps) {
   const handleSend = () => {
     if (text) {
       onMessage(text);
+      setText("");
     }
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -14,6 +14,7 @@ import ChatbotService from "../services/chatbotService";
 import Likert from "../components/forms/Likert";
 import Text from "../components/forms/Text";
 import Adjectives from "../components/forms/Adjectives";
+import PromptDialog from "../components/PromptDialog";
 
 export type QuestionItem = {
   start: string;
@@ -39,6 +40,11 @@ export default function Questions() {
   const [data, setData] = useState<any>({});
   const [err, setErr] = useState<string>("");
   const [activeStep, setActiveStep] = useState(0);
+  const [dialog, setDialog] = useState({
+    open: false,
+    title: "",
+    description: "",
+  });
   const navigate = useNavigate();
   const sections: Section[] = [
     {
@@ -385,10 +391,11 @@ export default function Questions() {
       return;
     }
     if (activeStep === sections.length - 1) {
-      await ChatbotService.questionnaire(uuid.current!, data, true);
-      const session = await ChatbotService.navigate(uuid.current!, "/part-c");
-      localStorage.setItem("state", session.state);
-      navigate("/part-c");
+      setDialog({
+        open: true,
+        title: "Confirmation",
+        description: "Are you sure you want to finish the questionnaire?",
+      });
     } else {
       await ChatbotService.questionnaire(uuid.current!, data, false);
       setActiveStep((lastStap) => lastStap + 1);
@@ -396,6 +403,13 @@ export default function Questions() {
       topAnchor.current?.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const submitQuestionnaire= async()=>{
+    await ChatbotService.questionnaire(uuid.current!, data, true);
+    const session = await ChatbotService.navigate(uuid.current!, "/inter-bc");
+    localStorage.setItem("state", session.state);
+    navigate("/inter-bc");
+  }
 
   const handleChange = (id: any, value: any) => {
     setData((lastData: any) => {
@@ -503,6 +517,19 @@ export default function Questions() {
             {activeStep === sections.length - 1 ? "Finish" : "Next"}
           </Button>
         </Box>
+        <PromptDialog
+          open={dialog.open}
+          title={dialog.title}
+          description={dialog.description}
+          onClose={() => {
+            setDialog({
+              open: false,
+              title: "",
+              description: "",
+            });
+          }}
+          onOk={submitQuestionnaire}
+        />
       </Container>
     </Box>
   );

@@ -5,12 +5,19 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RecommenderService from "../services/recommenderService";
 import ChatbotService from "../services/chatbotService";
+import PromptDialog from "../components/PromptDialog";
 
 export default function PartC() {
   let uuid = useRef<string | null>(null);
+  let productSelected = useRef<string | null>(null);
   let [state, setState] = useState<any>(null);
   const [items, setItems] = useState<string[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [dialog, setDialog] = useState({
+    open: false,
+    title: "",
+    description: "",
+  });
   const navigate = useNavigate();
   const getRecommendations = () => {
     RecommenderService.recomm(state).then((newItems) => {
@@ -35,7 +42,9 @@ export default function PartC() {
             break;
           case "answer":
             setMessages((msgs) => {
-              const newMessages = msgs.concat([{ self: false, text: action.text }]);
+              const newMessages = msgs.concat([
+                { self: false, text: action.text },
+              ]);
               localStorage.setItem("messages", JSON.stringify(newMessages));
               return newMessages;
             });
@@ -45,6 +54,14 @@ export default function PartC() {
         }
       }
     });
+  };
+  const finishExperiment = () => {
+    ChatbotService.finish(uuid.current!, productSelected.current!).then(
+      (session) => {
+        localStorage.setItem("state", JSON.stringify(session.state));
+        navigate(session.state.page);
+      }
+    );
   };
 
   useEffect(() => {
@@ -57,7 +74,7 @@ export default function PartC() {
       const lastItems = localStorage.getItem("itemsC");
       if (lastItems) {
         setItems((_) => JSON.parse(lastItems));
-      } 
+      }
 
       const lastMessages = localStorage.getItem("messages");
       if (lastMessages) {
@@ -88,7 +105,10 @@ export default function PartC() {
                         ChatbotService.like(uuid.current!, item).then(
                           (session) => {
                             setState((at: any) => {
-                              localStorage.setItem("state", JSON.stringify(session.state));
+                              localStorage.setItem(
+                                "state",
+                                JSON.stringify(session.state)
+                              );
                               return {
                                 ...at,
                                 state: session.state,
@@ -100,7 +120,10 @@ export default function PartC() {
                         ChatbotService.dislike(uuid.current!, item).then(
                           (session) => {
                             setState((at: any) => {
-                              localStorage.setItem("state", JSON.stringify(session.state));
+                              localStorage.setItem(
+                                "state",
+                                JSON.stringify(session.state)
+                              );
                               return {
                                 ...at,
                                 state: session.state,
@@ -111,9 +134,12 @@ export default function PartC() {
                       }
                     }}
                     onShop={() => {
-                      ChatbotService.finish(uuid.current!, item).then((session) => {
-                        localStorage.setItem("state", JSON.stringify(session.state));
-                        navigate(session.state.page);
+                      productSelected.current = item;
+                      setDialog({
+                        open: true,
+                        title: "Finish",
+                        description:
+                          "Are you sure that you found your skirt and want to finish the experiment?",
                       });
                     }}
                     id={item}
@@ -125,6 +151,19 @@ export default function PartC() {
           <Grid item xs={12} md={4}>
             <ChatArea messages={messages} onMessage={sendMessage} />
           </Grid>
+          <PromptDialog
+            open={dialog.open}
+            title={dialog.title}
+            description={dialog.description}
+            onClose={() => {
+              setDialog({
+                open: false,
+                title: "",
+                description: "",
+              });
+            }}
+            onOk={finishExperiment}
+          />
         </Grid>
       </Container>
     </Box>

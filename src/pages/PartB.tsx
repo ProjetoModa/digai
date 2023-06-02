@@ -5,12 +5,19 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RecommenderService from "../services/recommenderService";
 import ChatbotService from "../services/chatbotService";
+import PromptDialog from "../components/PromptDialog";
 
 export default function PartB() {
   let uuid = useRef<string | null>(null);
+  let productSelected = useRef<string | null>(null);
   let [state, setState] = useState<any>(null);
   const [items, setItems] = useState<string[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [dialog, setDialog] = useState({
+    open: false,
+    title: "",
+    description: "",
+  });
   const navigate = useNavigate();
   const getRecommendations = () => {
     RecommenderService.recomm(state).then((newItems) => {
@@ -46,6 +53,13 @@ export default function PartB() {
       }
     });
   };
+
+  const finishExperiment = () => {
+    ChatbotService.finish(uuid.current!, productSelected.current!).then((session) => {
+      localStorage.setItem("state", JSON.stringify(session.state));
+      navigate(session.state.page);
+    });
+  }
 
   useEffect(() => {
     let ignore = false;
@@ -125,9 +139,12 @@ export default function PartB() {
                       }
                     }}
                     onShop={() => {
-                      ChatbotService.finish(uuid.current!, item).then((session) => {
-                        localStorage.setItem("state", JSON.stringify(session.state));
-                        navigate(session.state.page);
+                      productSelected.current = item;
+                      setDialog({
+                        open: true,
+                        title: "Finish",
+                        description:
+                          "Are you sure that you found your skirt and want to finish the experiment?",
                       });
                     }}
                     id={item}
@@ -146,6 +163,19 @@ export default function PartB() {
             <ChatArea messages={messages} onMessage={sendMessage} />
           </Grid>
         </Grid>
+        <PromptDialog
+          open={dialog.open}
+          title={dialog.title}
+          description={dialog.description}
+          onClose={() => {
+            setDialog({
+              open: false,
+              title: "",
+              description: "",
+            });
+          }}
+          onOk={finishExperiment}
+        />
       </Container>
     </Box>
   );

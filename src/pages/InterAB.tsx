@@ -34,7 +34,7 @@ export default function InterAB() {
           <Typography variant="h4">END OF PART A</Typography>
           <Divider sx={{ margin: 2 }} />
           <Typography>
-            Thank you for your time. Please go to Part B of the experiment by
+            Please go to Part B of the experiment by
             clicking on the button below. There you will find the same
             experiment as before, but with a chatbot. Feel free to use it.
           </Typography>

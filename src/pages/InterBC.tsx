@@ -31,11 +31,12 @@ export default function InterBC() {
     >
       <Container>
         <Box component="main" sx={{ textAlign: "center" }}>
-          <Typography variant="h4">END OF PART B</Typography>
+          <Typography variant="h4">We are almost finished</Typography>
           <Divider sx={{ margin: 2 }} />
           <Typography>
-            We are almost finished. Part C is rather quick and there will be no
-            more questionnaires.
+             Part C is rather quick and there will be no
+            more questionnaires. There you will find the same
+            experiment as before, but you must use the chatbot to get recommendations.
           </Typography>
           <Box
             sx={{
