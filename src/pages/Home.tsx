@@ -67,10 +67,20 @@ export default function Home() {
     >
       <Container>
         <Box component="main" sx={{ textAlign: "center" }}>
-          <Typography variant="h4">
-            USER EXPERIENCE IN CLOTHING FASHION E-COMMERCE - EVALUATION
-            EXPERIMENT
-          </Typography>
+          <Box sx={{display: "flex", flexDirection: "row"}}>
+            <img
+              src="https://static.cct.ufcg.edu.br/logo/UFCG.svg"
+              height={150}
+            />
+            <Typography variant="h4">
+              USER EXPERIENCE IN CLOTHING FASHION E-COMMERCE - EVALUATION
+              EXPERIMENT
+            </Typography>
+            <img
+              src="https://static.cct.ufcg.edu.br/logo/UFAL.svg"
+              height={150}
+            />
+          </Box>
           <Divider sx={{ margin: 2 }} />
           <Typography>
             You are kindly requested to help us evaluate scenarios of

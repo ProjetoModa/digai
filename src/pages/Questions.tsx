@@ -404,12 +404,12 @@ export default function Questions() {
     }
   };
 
-  const submitQuestionnaire= async()=>{
+  const submitQuestionnaire = async () => {
     await ChatbotService.questionnaire(uuid.current!, data, true);
     const session = await ChatbotService.navigate(uuid.current!, "/inter-bc");
     localStorage.setItem("state", session.state);
     navigate("/inter-bc");
-  }
+  };
 
   const handleChange = (id: any, value: any) => {
     setData((lastData: any) => {
@@ -433,8 +433,18 @@ export default function Questions() {
   return (
     <Box ref={topAnchor} component="main">
       <Box component="header" className="header" sx={{ textAlign: "center" }}>
-        <Container sx={{ padding: 4 }}>
-          <Typography variant="h5">Questionnaire</Typography>
+        <Container>
+          <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "center", padding: 4}}>
+            <img
+              src="https://static.cct.ufcg.edu.br/logo/UFCG.svg"
+              width={70}
+            />
+            <Typography variant="h5" sx={{margin: 4}}>Questionnaire</Typography>
+            <img
+              src="https://static.cct.ufcg.edu.br/logo/UFAL.svg"
+              width={50}
+            />
+          </Box>
         </Container>
       </Box>
       <Container>
