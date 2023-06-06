@@ -19,8 +19,8 @@ export default function PartC() {
     description: "",
   });
   const navigate = useNavigate();
-  const getRecommendations = () => {
-    RecommenderService.recomm(state).then((newItems) => {
+  const getRecommendations = (overrideState?: any) => {
+    RecommenderService.recomm(overrideState || state).then((newItems) => {
       setItems((at) => {
         const newList = at.concat(newItems.products);
         localStorage.setItem("itemsC", JSON.stringify(newList));
@@ -30,6 +30,13 @@ export default function PartC() {
   };
   const sendMessage = (utterance: string) => {
     ChatbotService.chat(uuid.current!, utterance).then((result) => {
+      setState((at: any) => {
+        localStorage.setItem("state", JSON.stringify(result.state));
+        return {
+          ...at,
+          state: result.state,
+        };
+      });
       setMessages((msgs) => {
         const newMessages = msgs.concat([{ self: true, text: utterance }]);
         localStorage.setItem("messages", JSON.stringify(newMessages));
@@ -38,7 +45,7 @@ export default function PartC() {
       for (const action of result.actions) {
         switch (action.action) {
           case "recommend":
-            getRecommendations();
+            getRecommendations(result.state);
             break;
           case "answer":
             setMessages((msgs) => {
