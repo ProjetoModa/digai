@@ -29,7 +29,6 @@ export default function Text({
       />
       <CardContent>
         <TextField
-          sx={{ textarea: { color: "#000000" } }}
           id="filled-multiline-static"
           multiline
           fullWidth

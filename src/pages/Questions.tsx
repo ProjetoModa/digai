@@ -458,7 +458,7 @@ export default function Questions() {
           </Stepper>
         </Box>
         <Box sx={{ margin: 4 }}>
-          <Typography sx={{ color: "#000000" }} variant="h4">
+          <Typography variant="h4">
             {sections[activeStep].title}
           </Typography>
           {sections[activeStep].questions.map((question, index) => {

@@ -12,6 +12,7 @@ import InterBC from "./pages/InterBC.tsx";
 import PartC from "./pages/PartC.tsx";
 import End from "./pages/End.tsx";
 import Questions from "./pages/Questions.tsx";
+import Instructions from "./pages/Instructions.tsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/end",
     element: <End />,
+  },
+  {
+    path: "/instructions",
+    element: <Instructions />,
   },
 ]);
 

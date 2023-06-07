@@ -39,6 +39,11 @@ export default function ChatArea({ messages, onMessage }: ChatAreaProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
   }
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter'){
+      handleSend();
+    }
+  }
   return (
     <Card
       variant="outlined"
@@ -48,7 +53,6 @@ export default function ChatArea({ messages, onMessage }: ChatAreaProps) {
         height: "50vh",
         position: "fixed",
         margin: 2,
-        color: "#000000",
       }}
     >
       <CardHeader title="Chat" subheader={<Divider />} />
@@ -76,10 +80,10 @@ export default function ChatArea({ messages, onMessage }: ChatAreaProps) {
       </CardContent>
       <CardActions>
         <TextField
-          sx={{ input: { color: "#000000" } }}
           fullWidth
           value={text}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
           InputProps={{
             endAdornment: (
               <IconButton color="primary" onClick={handleSend}>
