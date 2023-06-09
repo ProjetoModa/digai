@@ -73,24 +73,18 @@ export default function PartA() {
                   if (liked) {
                     ChatbotService.like(uuid.current!, item).then(
                       (session) => {
-                        setState((at: any) => {
+                        setState((_: any) => {
                           localStorage.setItem("state", JSON.stringify(session.state));
-                          return {
-                            ...at,
-                            state: session.state,
-                          };
+                          return session.state;
                         });
                       }
                     );
                   } else {
                     ChatbotService.dislike(uuid.current!, item).then(
                       (session) => {
-                        setState((at: any) => {
+                        setState((_: any) => {
                           localStorage.setItem("state", JSON.stringify(session.state));
-                          return {
-                            ...at,
-                            state: session.state,
-                          };
+                          return session.state;
                         });
                       }
                     );

@@ -39,7 +39,7 @@ export default function PartB() {
       });
       setMessages((msgs) => {
         const newMessages = msgs.concat([{ self: true, text: utterance }]);
-        localStorage.setItem("messages", JSON.stringify(newMessages));
+        localStorage.setItem("messagesB", JSON.stringify(newMessages));
         return newMessages;
       });
       for (const action of result.actions) {
@@ -52,7 +52,7 @@ export default function PartB() {
               const newMessages = msgs.concat([
                 { self: false, text: action.text },
               ]);
-              localStorage.setItem("messages", JSON.stringify(newMessages));
+              localStorage.setItem("messagesB", JSON.stringify(newMessages));
               return newMessages;
             });
             break;
@@ -95,7 +95,7 @@ export default function PartB() {
         });
       }
 
-      const lastMessages = localStorage.getItem("messages");
+      const lastMessages = localStorage.getItem("messagesB");
       if (lastMessages) {
         setMessages((_) => JSON.parse(lastMessages));
       }
@@ -126,30 +126,24 @@ export default function PartB() {
                       if (liked) {
                         ChatbotService.like(uuid.current!, item).then(
                           (session) => {
-                            setState((at: any) => {
+                            setState((_: any) => {
                               localStorage.setItem(
                                 "state",
                                 JSON.stringify(session.state)
                               );
-                              return {
-                                ...at,
-                                state: session.state,
-                              };
+                              return session.state;
                             });
                           }
                         );
                       } else {
                         ChatbotService.dislike(uuid.current!, item).then(
                           (session) => {
-                            setState((at: any) => {
+                            setState((_: any) => {
                               localStorage.setItem(
                                 "state",
                                 JSON.stringify(session.state)
                               );
-                              return {
-                                ...at,
-                                state: session.state,
-                              };
+                              return session.state;
                             });
                           }
                         );
