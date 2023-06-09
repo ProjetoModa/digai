@@ -49,7 +49,9 @@ export default function PartB() {
             break;
           case "answer":
             setMessages((msgs) => {
-              const newMessages = msgs.concat([{ self: false, text: action.text }]);
+              const newMessages = msgs.concat([
+                { self: false, text: action.text },
+              ]);
               localStorage.setItem("messages", JSON.stringify(newMessages));
               return newMessages;
             });
@@ -62,11 +64,13 @@ export default function PartB() {
   };
 
   const finishExperiment = () => {
-    ChatbotService.finish(uuid.current!, productSelected.current!).then((session) => {
-      localStorage.setItem("state", JSON.stringify(session.state));
-      navigate(session.state.page);
-    });
-  }
+    ChatbotService.finish(uuid.current!, productSelected.current!).then(
+      (session) => {
+        localStorage.setItem("state", JSON.stringify(session.state));
+        navigate(session.state.page);
+      }
+    );
+  };
 
   useEffect(() => {
     let ignore = false;
@@ -123,7 +127,10 @@ export default function PartB() {
                         ChatbotService.like(uuid.current!, item).then(
                           (session) => {
                             setState((at: any) => {
-                              localStorage.setItem("state", JSON.stringify(session.state));
+                              localStorage.setItem(
+                                "state",
+                                JSON.stringify(session.state)
+                              );
                               return {
                                 ...at,
                                 state: session.state,
@@ -135,7 +142,10 @@ export default function PartB() {
                         ChatbotService.dislike(uuid.current!, item).then(
                           (session) => {
                             setState((at: any) => {
-                              localStorage.setItem("state", JSON.stringify(session.state));
+                              localStorage.setItem(
+                                "state",
+                                JSON.stringify(session.state)
+                              );
                               return {
                                 ...at,
                                 state: session.state,
@@ -161,7 +171,12 @@ export default function PartB() {
             </Grid>
 
             <Box sx={{ textAlign: "center", margin: 2 }}>
-              <Button variant="contained" onClick={getRecommendations}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  getRecommendations();
+                }}
+              >
                 More Skirts Recommendations
               </Button>
             </Box>

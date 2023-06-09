@@ -56,9 +56,6 @@ export default function Adjectives({
   const handleChange = (index: number) => {
     return (event: React.ChangeEvent<HTMLInputElement>) => {
       const newData = [...(value || [])];
-      console.log(newData);
-
-      console.log(index);
       newData[index] = event.target.value;
       onChange(id, newData);
     };
