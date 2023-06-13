@@ -30,12 +30,9 @@ export default function PartB() {
   };
   const sendMessage = (utterance: string) => {
     ChatbotService.chat(uuid.current!, utterance).then((result) => {
-      setState((at: any) => {
+      setState((_: any) => {
         localStorage.setItem("state", JSON.stringify(result.state));
-        return {
-          ...at,
-          state: result.state,
-        };
+        return result.state;
       });
       setMessages((msgs) => {
         const newMessages = msgs.concat([{ self: true, text: utterance }]);
