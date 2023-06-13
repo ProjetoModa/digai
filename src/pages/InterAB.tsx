@@ -31,9 +31,9 @@ export default function InterAB() {
     >
       <Container>
         <Box component="main" sx={{ textAlign: "center" }}>
-          <Typography variant="h4">END OF PART A</Typography>
+          <Typography variant="h4" sx={{color: "#ffffff"}}>END OF PART A</Typography>
           <Divider sx={{ margin: 2 }} />
-          <Typography>
+          <Typography sx={{color: "#fafafa"}}>
             Please go to Part B of the experiment by
             clicking on the button below. There you will find the same
             experiment as before, but with a chatbot. Feel free to use it.
