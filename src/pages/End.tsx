@@ -20,9 +20,10 @@ export default function End() {
         <Box component="main" sx={{ textAlign: "center" }}>
           <Typography variant="h4">Thank You</Typography>
           <Divider sx={{ margin: 2 }} />
-          <Typography>
-            Thank you for your time.
-            You can contact me at andredantas@copin.ufcg.edu.br if you like to receive a copy of the published results.
+          <Typography sx={{color: "#ffffff"}}>
+            Thank you for your time. You can contact me at
+            andredantas@copin.ufcg.edu.br if you like to receive a copy of the
+            published results.
           </Typography>
           <Box
             sx={{
@@ -33,7 +34,7 @@ export default function End() {
             }}
           >
             <Button variant="contained" component={Link} to={"/"}>
-              Restart Experiment
+              Repeate the Experiment for Another Person
             </Button>
           </Box>
         </Box>
