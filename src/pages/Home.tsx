@@ -106,7 +106,7 @@ export default function Home() {
             Results will be kept anonymous. After the experiment, you will be
             asked to complete an anonymous questionnaire which should take you
             another 15 minutes approximately. Thius, altogehter (experiment +
-            questionnaire) you might spend at least 30min in this study.
+            questionnaire) you might spend around 39min in this study.
           </Typography>
 
           <Typography variant="h5" sx={{ color: "#ffffff", mt: 2 }}>
@@ -124,7 +124,10 @@ export default function Home() {
             in Part B, you may use a chatbot after an initial, random set of
             skirt suggestions; and, in Part C you ask the chatbot to make an
             initial set of skirt suggestions. This website interaction will help
-            us understand the effectiveness of the chatbot in context.
+            us understand the effectiveness of the chatbot in context. Please
+            click on the "Instructions" button below before proceeding. Then,
+            return to this page, check the "Consent Box" and press the "Start
+            Experiment" button. Thank you for your time.
           </Typography>
 
           <Typography variant="h5" sx={{ color: "#ffffff", mt: 2 }}>
@@ -172,7 +175,7 @@ export default function Home() {
               gap: 2,
             }}
           >
-            <Button variant="contained" component={Link} to={"/instructions"}>
+            <Button variant="contained" component={Link} to={"/instructions"} target="_blank">
               Instructions
             </Button>
             <Button variant="contained" onClick={startSession}>
