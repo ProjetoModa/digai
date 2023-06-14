@@ -10,6 +10,7 @@ import PromptDialog from "../components/PromptDialog";
 export default function PartB() {
   let uuid = useRef<string | null>(null);
   let productSelected = useRef<string | null>(null);
+  const moreRecommendationsRef = useRef<HTMLDivElement>();
   let [state, setState] = useState<any>(null);
   const [items, setItems] = useState<string[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -101,6 +102,10 @@ export default function PartB() {
       ignore = true;
     };
   }, []);
+
+  useEffect(() => {
+    moreRecommendationsRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [items]);
   return (
     <Box component="main">
       <Box component="header" className="header" sx={{ textAlign: "center" }}>
@@ -161,7 +166,10 @@ export default function PartB() {
               ))}
             </Grid>
 
-            <Box sx={{ textAlign: "center", margin: 2 }}>
+            <Box
+              sx={{ textAlign: "center", margin: 2 }}
+              ref={moreRecommendationsRef}
+            >
               <Button
                 variant="contained"
                 onClick={() => {

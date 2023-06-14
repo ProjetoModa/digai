@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import ClothItem from "../components/ClothItem";
 import ChatArea, { Message } from "../components/ChatArea";
 import { useEffect, useRef, useState } from "react";
@@ -10,6 +10,7 @@ import PromptDialog from "../components/PromptDialog";
 export default function PartC() {
   let uuid = useRef<string | null>(null);
   let productSelected = useRef<string | null>(null);
+  const moreRecommendationsRef = useRef<HTMLDivElement>();
   let [state, setState] = useState<any>(null);
   const [items, setItems] = useState<string[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -86,6 +87,10 @@ export default function PartC() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    moreRecommendationsRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [items]);
   return (
     <Box component="main">
       <Box component="header" className="header" sx={{ textAlign: "center" }}>
@@ -145,6 +150,21 @@ export default function PartC() {
                 </Grid>
               ))}
             </Grid>
+
+            <Box
+              sx={{ textAlign: "center", margin: 2 }}
+              ref={moreRecommendationsRef}
+            >
+              <Button
+                hidden
+                variant="contained"
+                onClick={() => {
+                  getRecommendations();
+                }}
+              >
+                More Skirts Recommendations
+              </Button>
+            </Box>
           </Grid>
           <Grid item xs={12} md={4}>
             <ChatArea messages={messages} onMessage={sendMessage} />

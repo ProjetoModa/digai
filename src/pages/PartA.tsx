@@ -9,6 +9,7 @@ import PromptDialog from "../components/PromptDialog";
 export default function PartA() {
   let uuid = useRef<string | null>(null);
   let productSelected = useRef<string | null>(null);
+  const moreRecommendationsRef = useRef<HTMLDivElement>();
   let [state, setState] = useState<any>(null);
   const [items, setItems] = useState<string[]>([]);
   const [dialog, setDialog] = useState({
@@ -19,11 +20,13 @@ export default function PartA() {
   const navigate = useNavigate();
 
   const finishExperiment = () => {
-    ChatbotService.finish(uuid.current!, productSelected.current!).then((session) => {
-      localStorage.setItem("state", JSON.stringify(session.state));
-      navigate(session.state.page);
-    });
-  }
+    ChatbotService.finish(uuid.current!, productSelected.current!).then(
+      (session) => {
+        localStorage.setItem("state", JSON.stringify(session.state));
+        navigate(session.state.page);
+      }
+    );
+  };
 
   useEffect(() => {
     let ignore = false;
@@ -53,6 +56,10 @@ export default function PartA() {
     };
   }, []);
 
+  useEffect(() => {
+    moreRecommendationsRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [items]);
+
   return (
     <Box component="main">
       <Box component="header" className="header" sx={{ textAlign: "center" }}>
@@ -71,19 +78,23 @@ export default function PartA() {
               <ClothItem
                 onLike={(liked) => {
                   if (liked) {
-                    ChatbotService.like(uuid.current!, item).then(
-                      (session) => {
-                        setState((_: any) => {
-                          localStorage.setItem("state", JSON.stringify(session.state));
-                          return session.state;
-                        });
-                      }
-                    );
+                    ChatbotService.like(uuid.current!, item).then((session) => {
+                      setState((_: any) => {
+                        localStorage.setItem(
+                          "state",
+                          JSON.stringify(session.state)
+                        );
+                        return session.state;
+                      });
+                    });
                   } else {
                     ChatbotService.dislike(uuid.current!, item).then(
                       (session) => {
                         setState((_: any) => {
-                          localStorage.setItem("state", JSON.stringify(session.state));
+                          localStorage.setItem(
+                            "state",
+                            JSON.stringify(session.state)
+                          );
                           return session.state;
                         });
                       }
@@ -104,7 +115,10 @@ export default function PartA() {
             </Grid>
           ))}
         </Grid>
-        <Box sx={{ textAlign: "center", margin: 2 }}>
+        <Box
+          sx={{ textAlign: "center", margin: 2 }}
+          ref={moreRecommendationsRef}
+        >
           <Button
             variant="contained"
             onClick={() => {
