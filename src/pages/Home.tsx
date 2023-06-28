@@ -12,8 +12,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import ChatbotService from "../services/chatbotService";
 import AlertDialog from "../components/AlertDialog";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
   const [consent, giveConsent] = useState<boolean>(false);
   const [dialog, setDialog] = useState({
     open: false,
@@ -73,8 +75,7 @@ export default function Home() {
               height={150}
             />
             <Typography variant="h4" sx={{ color: "#ffffff" }}>
-              USER EXPERIENCE IN CLOTHING FASHION E-COMMERCE - EVALUATION
-              EXPERIMENT
+              {t("title")}
             </Typography>
             <img
               src="https://static.cct.ufcg.edu.br/logo/UFAL.svg"
@@ -83,77 +84,29 @@ export default function Home() {
           </Box>
           <Divider sx={{ margin: 2 }} />
           <Typography variant="h5" sx={{ color: "#ffffff" }}>
-            What is the research about?
+            {t("home.title1")}
           </Typography>
-          <Typography sx={{ color: "#fafafa" }}>
-            I am André Landim, a Computer Science Master’s student at the
-            Federal University of Campina Grande (UFCG) in collaboration with
-            the Federal University of Alagoas (UFAL) in Brazil. We would like to
-            invite you to participate in a study regarding chatbot and
-            recommender system for fashion e-commerce. This study was approved
-            by the Ethics Committee at UFAL (CAAE 43950621.4.0000.5013).
-          </Typography>
+          <Typography sx={{ color: "#fafafa" }}>{t("home.p1")}</Typography>
           <Typography variant="h5" sx={{ color: "#ffffff", mt: 2 }}>
-            What will happen to me if I take part?
+            {t("home.title2")}
           </Typography>
-          <Typography sx={{ color: "#fafafa" }}>
-            You are kindly requested to help us evaluate scenarios of
-            Recommender Systems' applications to Fashion E-commerce. For that,
-            we designed an evaluation website in which you try to select a skirt
-            you like and would possibly buy from a fashion e-commerce site in
-            three different scenarios. The website interactive experiment should
-            take you less than 15 minutes to complete (there are 3 parts).
-            Results will be kept anonymous. After the experiment, you will be
-            asked to complete an anonymous questionnaire which should take you
-            another 15 minutes approximately. Thius, altogehter (experiment +
-            questionnaire) you might spend around 39min in this study.
-          </Typography>
+          <Typography sx={{ color: "#fafafa" }}>{t("home.p2")}</Typography>
 
           <Typography variant="h5" sx={{ color: "#ffffff", mt: 2 }}>
-            What is the “evaluation experiment” via website interaction and what
-            am I supposed to do?
+            {t("home.title3")}
           </Typography>
-          <Typography sx={{ color: "#fafafa" }}>
-            In the experiment you will find a list of skirts to choose. No
-            personal information will be collected, only your interactions with
-            the website via clicks. Your goal is to find a striped mid-size
-            skirt that you like and would "buy". To simulate your buying action
-            and end the experiment you click on the 🛒 (shopping cart) button.
-            The website interaction will take place in three parts. In Part A
-            recommendations are made to you without the assistance of a chatbot;
-            in Part B, you may use a chatbot after an initial, random set of
-            skirt suggestions; and, in Part C you ask the chatbot to make an
-            initial set of skirt suggestions. This website interaction will help
-            us understand the effectiveness of the chatbot in context.
-          </Typography>
+          <Typography sx={{ color: "#fafafa" }}>{t("home.p3")}</Typography>
 
           <Typography variant="h5" sx={{ color: "#ffffff", mt: 2 }}>
-            What information will be collected?
+            {t("home.title4")}
           </Typography>
-          <Typography sx={{ color: "#fafafa" }}>
-            The questions in this survey seek to identify various aspects of the
-            user's experience, including the quality, accuracy, variety,
-            control, and efficiency of the recommendations provided by the
-            platform, as well as the overall trust and experience of the user.
-            We also collect logs of tool usage, which record each user iteration
-            and the timestamp of each action taken. We do not collect any
-            personal information, only user analytics. We do not collect any
-            information, such as email, that may identify you in any way. Some
-            of the survey questions contain textboxes where you will be asked to
-            type in your own answers. Please note that in order for this survey
-            to be anonymous, you should not include in your answers any
-            information from which you, or other people, could be identified.
-          </Typography>
-          <Typography sx={{ color: "#fafafa" }}>
-            Please click on the "Instructions" button below before proceeding.
-            Then, return to this page, check the "Consent Box" and press the
-            "Start Experiment" button. Thank you for your time.
-          </Typography>
+          <Typography sx={{ color: "#fafafa" }}>{t("home.p4")}</Typography>
+          <Typography sx={{ color: "#fafafa" }}>{t("home.p5")}</Typography>
 
           <FormControlLabel
             sx={{ margin: 2, color: "#ffffff" }}
             control={<Checkbox checked={consent} onChange={handleChange} />}
-            label="By continuing with this survey you confirm that you are at least 18 years of age and that you consent to participate. If you do not consent to participate, please exit this survey or close your browser."
+            label={t("consent")}
           />
 
           <AlertDialog
@@ -183,10 +136,10 @@ export default function Home() {
               to={"/instructions"}
               target="_blank"
             >
-              Instructions
+              {t("instructions")}
             </Button>
             <Button variant="contained" onClick={startSession}>
-              Start Experiment
+              {t("start")}
             </Button>
           </Box>
         </Box>

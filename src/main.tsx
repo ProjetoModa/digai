@@ -13,6 +13,7 @@ import PartC from "./pages/PartC.tsx";
 import End from "./pages/End.tsx";
 import Questions from "./pages/Questions.tsx";
 import Instructions from "./pages/Instructions.tsx";
+import "./i18n";
 
 const router = createBrowserRouter([
   {
