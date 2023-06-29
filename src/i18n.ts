@@ -30,10 +30,25 @@ const resources = {
       },
       instructions: {
         title: "Instructions",
-        catalog: "Catalog",
-        catalog_p:
-          "The scope of this experiment is limited by the catalog used. The information in the catalog relates to skirts with the following features only:",
-        catalog_p2: "The experiment has Parts A, B and C.",
+        catalog: {
+          title: "Catalog",
+          p1: "The scope of this experiment is limited by the catalog used. The information in the catalog relates to skirts with the following features only:",
+          p2: "The experiment has Parts A, B and C.",
+        },
+        part_a: {
+          title: "Part A",
+          p1: '1. After you press the "Start the Experiment" button, you should see a gallery like the one below.',
+          p2: '2. You should mark with a heart the skirts that you have an opinion about or leave blank those that you are indiferent. Then you can click on "More Skirts Recommendations" to load more skirts based on your given preferences.',
+          p3: "3. Whenever you find a skirt that you like (would buy), click on the 🛒 (shopping cart) button to finalize the current part of the experiment.",
+        },
+        part_b: {
+          title: "Part B",
+          p1: "It's similar to Part A, but to the right of the screen you have a chatbot you can interact with. You can ask the chatbot for specific types of skirts. The information that is available for you to ask the chatbot is that in the catalog as provided at the top of this page.",
+        },
+        part_c: {
+          title: "Part C",
+          p1: "As Part B but a chatbot waits for your input to present any initial suggestions.",
+        },
       },
       colors: {
         title: "Colors",
@@ -113,10 +128,25 @@ const resources = {
       },
       instructions: {
         title: "Instruções",
-        catalog: "Catálogo",
-        catalog_p:
-          "O escopo desta experiência é limitado pelo catálogo usado. A informação do catálogo refere-se apenas a saias com as seguintes características:",
-        catalog_p2: "O experimento tem as Partes A, B e C.",
+        catalog: {
+          title: "Catálogo",
+          p1: "O escopo desta experiência é limitado pelo catálogo usado. A informação do catálogo refere-se apenas a saias com as seguintes características:",
+          p2: "O experimento tem as Partes A, B e C.",
+        },
+        part_a: {
+          title: "Parte A",
+          p1: '1. Depois de pressionar o botão "Iniciar o Experimento", você deverá ver uma galeria como a abaixo.',
+          p2: '2. Você deve marcar com coração as saias sobre as quais você tem opinião ou deixar em branco aquelas que você é indiferente. Em seguida, você pode clicar em "Mais recomendações de saias" para carregar mais saias com base em suas preferências.',
+          p3: "3. Sempre que encontrar uma saia que goste (compraria), clique no botão 🛒 (carrinho de compras) para finalizar a parte atual do experimento.",
+        },
+        part_b: {
+          title: "Parte B",
+          p1: "É semelhante à Parte A, mas à direita da tela você tem um chatbot com o qual pode interagir. Você pode pedir ao chatbot tipos específicos de saias. A informação que está disponível para você perguntar ao chatbot é a que está no catálogo fornecido no topo desta página.",
+        },
+        part_c: {
+          title: "Parte C",
+          p1: "Como Parte B, mas um chatbot aguarda sua entrada para apresentar sugestões iniciais.",
+        },
       },
       colors: {
         title: "Cores",
