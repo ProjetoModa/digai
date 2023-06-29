@@ -12,8 +12,10 @@ import {
 } from "@mui/material";
 import ClothItem from "../components/ClothItem";
 import { ShoppingCart } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export default function Instructions() {
+  const { t } = useTranslation();
   const items: string[] = [
     "Stretch-Knit_A-Line_Skirt/img_00000019.jpg",
     "Floral_Lace_Mini_Skirt/img_00000039.jpg",
@@ -46,7 +48,7 @@ export default function Instructions() {
               width={70}
             />
             <Typography variant="h5" sx={{ margin: 4 }}>
-              Instructions
+                {t("instructions.title")}
             </Typography>
             <img
               src="https://static.cct.ufcg.edu.br/logo/UFAL.svg"
@@ -57,53 +59,51 @@ export default function Instructions() {
       </Box>
       <Container>
         <Box component="section" sx={{margin: 2}}>
-        <Typography variant="h2">Catalog</Typography>
+        <Typography variant="h2">{t("instructions.catalog")}</Typography>
         <Typography variant="h4">
-          The scope of this experiment is limited by the catalog used. The
-          information in the catalog relates to skirts with the following
-          features only:
+          {t("instructions.catalog_p")}
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={2}>
             <Card>
-              <CardHeader title="Color" />
+              <CardHeader title={t("colors.title")} />
               <CardContent>
                 <List dense>
                   <ListItem>
-                    <ListItemText primary="Black" />
+                    <ListItemText primary={t("colors.black")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Blue" />
+                    <ListItemText primary={t("colors.blue")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Brown" />
+                    <ListItemText primary={t("colors.brown")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Beige" />
+                    <ListItemText primary={t("colors.beige")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Gray" />
+                    <ListItemText primary={t("colors.gray")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Green" />
+                    <ListItemText primary={t("colors.green")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Orange" />
+                    <ListItemText primary={t("colors.orange")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Pink" />
+                    <ListItemText primary={t("colors.pink")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Purple" />
+                    <ListItemText primary={t("colors.purple")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Red" />
+                    <ListItemText primary={t("colors.red")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="White" />
+                    <ListItemText primary={t("colors.white")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Yellow" />
+                    <ListItemText primary={t("colors.yellow")} />
                   </ListItem>
                 </List>
               </CardContent>
@@ -111,26 +111,26 @@ export default function Instructions() {
           </Grid>
           <Grid item xs={2}>
             <Card>
-              <CardHeader title="Fabric" />
+              <CardHeader title={t("fabrics.title")} />
               <CardContent>
                 <List dense>
                   <ListItem>
-                    <ListItemText primary="Denim" />
+                    <ListItemText primary={t("fabrics.denim")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Knitted" />
+                    <ListItemText primary={t("fabrics.knitted")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Laced" />
+                    <ListItemText primary={t("fabrics.laced")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Glossy / Leather" />
+                    <ListItemText primary={t("fabrics.glossy")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="General Fabric (Cotton, Polyester)" />
+                    <ListItemText primary={t("fabrics.general")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Velvet" />
+                    <ListItemText primary={t("fabrics.velvet")} />
                   </ListItem>
                 </List>
               </CardContent>
@@ -138,38 +138,38 @@ export default function Instructions() {
           </Grid>
           <Grid item xs={2}>
             <Card>
-              <CardHeader title="Pattern" />
+              <CardHeader title={t("patterns.title")} />
               <CardContent>
                 <List dense>
                   <ListItem>
-                    <ListItemText primary="Animal Print" />
+                    <ListItemText primary={t("patterns.animal_print")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Geometric" />
+                    <ListItemText primary={t("patterns.geometric")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Camouflage" />
+                    <ListItemText primary={t("patterns.camouflage")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Checked" />
+                    <ListItemText primary={t("patterns.checked")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Floral" />
+                    <ListItemText primary={t("patterns.floral")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Paisley" />
+                    <ListItemText primary={t("patterns.paisley")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Plain" />
+                    <ListItemText primary={t("patterns.plain")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Polka Dot" />
+                    <ListItemText primary={t("patterns.polka_dot")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Striped" />
+                    <ListItemText primary={t("patterns.striped")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Tie Dyed" />
+                    <ListItemText primary={t("patterns.tie_dyed")} />
                   </ListItem>
                 </List>
               </CardContent>
@@ -177,17 +177,17 @@ export default function Instructions() {
           </Grid>
           <Grid item xs={2}>
             <Card>
-              <CardHeader title="Size" />
+              <CardHeader title={t("sizes.title")} />
               <CardContent>
                 <List dense>
                   <ListItem>
-                    <ListItemText primary="Mini" />
+                    <ListItemText primary={t("mini")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Midi" />
+                    <ListItemText primary={t("midi")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Maxi" />
+                    <ListItemText primary={t("maxi")} />
                   </ListItem>
                 </List>
               </CardContent>
@@ -199,13 +199,13 @@ export default function Instructions() {
               <CardContent>
                 <List dense>
                   <ListItem>
-                    <ListItemText primary="Pleated (waves or Folds)" />
+                    <ListItemText primary={t("shapes.pleated")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Straight" />
+                    <ListItemText primary={t("shapes.straight")} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Asymetrica" />
+                    <ListItemText primary={t("shapes.asymetric")} />
                   </ListItem>
                 </List>
               </CardContent>
@@ -213,7 +213,7 @@ export default function Instructions() {
           </Grid>
         </Grid>
         <Typography variant="h4">
-          The experiment has Parts A, B and C.
+          {t("instructions.catalog_p2")}
         </Typography>
         </Box>
         <Box component="section" sx={{margin: 2}}>

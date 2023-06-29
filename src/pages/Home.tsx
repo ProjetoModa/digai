@@ -32,8 +32,8 @@ export default function Home() {
     if (!consent) {
       setDialog({
         open: true,
-        title: "Consent is required.",
-        description: "To continue, please check the consent box",
+        title: t("dialog.consent.title"),
+        description: t("dialog.consent.description"),
       });
     } else {
       const uuid = uuidv4();
@@ -136,7 +136,7 @@ export default function Home() {
               to={"/instructions"}
               target="_blank"
             >
-              {t("instructions")}
+              {t("instructions.title")}
             </Button>
             <Button variant="contained" onClick={startSession}>
               {t("start")}
