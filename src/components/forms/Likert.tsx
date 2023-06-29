@@ -14,6 +14,7 @@ import {
   tableCellClasses,
 } from "@mui/material";
 import { grey, red } from "@mui/material/colors";
+import { t } from "i18next";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -70,23 +71,31 @@ export default function Likert({
           <Table>
             <TableHead>
               <TableRow>
-                <StyledTableCell sx={{ width: "16%" }}>Part</StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
-                  Strongly agree
-                </StyledTableCell>
-                <StyledTableCell sx={{ width: "16%" }}>Agree</StyledTableCell>
-                <StyledTableCell sx={{ width: "16%" }}>Neutral</StyledTableCell>
-                <StyledTableCell sx={{ width: "16%" }}>
-                  Disagree
+                  {t("part")}
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
-                  Strongly disagree
+                  {t("qst.likert.l1")}
+                </StyledTableCell>
+                <StyledTableCell sx={{ width: "16%" }}>
+                  {t("qst.likert.l2")}
+                </StyledTableCell>
+                <StyledTableCell sx={{ width: "16%" }}>
+                  {t("qst.likert.l3")}
+                </StyledTableCell>
+                <StyledTableCell sx={{ width: "16%" }}>
+                  {t("qst.likert.l4")}
+                </StyledTableCell>
+                <StyledTableCell sx={{ width: "16%" }}>
+                  {t("qst.likert.l5")}
                 </StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <StyledTableRow>
-                <StyledTableCell sx={{ width: "16%" }}>Part A</StyledTableCell>
+                <StyledTableCell sx={{ width: "16%" }}>
+                  {t("part_a")}
+                </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
                     checked={value?.a === "1"}
@@ -134,7 +143,9 @@ export default function Likert({
                 </StyledTableCell>
               </StyledTableRow>
               <StyledTableRow>
-                <StyledTableCell sx={{ width: "16%" }}>Part B</StyledTableCell>
+                <StyledTableCell sx={{ width: "16%" }}>
+                  {t("part_b")}
+                </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
                     checked={value?.b === "1"}

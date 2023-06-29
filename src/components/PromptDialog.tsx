@@ -6,6 +6,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export type PromptDialogProps = {
   title: string;
@@ -16,6 +17,7 @@ export type PromptDialogProps = {
 };
 
 export default function PromptDialog(props: PromptDialogProps) {
+  const { t } = useTranslation();
   return (
     <Dialog
       open={props.open}
@@ -23,9 +25,7 @@ export default function PromptDialog(props: PromptDialogProps) {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">
-        {props.title}
-      </DialogTitle>
+      <DialogTitle id="alert-dialog-title">{props.title}</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
           {props.description}
@@ -33,7 +33,7 @@ export default function PromptDialog(props: PromptDialogProps) {
       </DialogContent>
       <DialogActions>
         <Button autoFocus onClick={props.onClose}>
-          Cancel
+          {t("cancel")}
         </Button>
         <Button onClick={props.onOk}>Ok</Button>
       </DialogActions>

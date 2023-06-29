@@ -10,6 +10,20 @@ const resources = {
       consent:
         "By continuing with this survey you confirm that you are at least 18 years of age and that you consent to participate. If you do not consent to participate, please exit this survey or close your browser.",
       start: "Start Experiment",
+      cancel: "Cancel",
+      part: "Part",
+      part_a: "Part A",
+      part_b: "Part B",
+      part_c: "Part C",
+      qst: {
+        likert: {
+          l1: "Strongly agree",
+          l2: "Agree",
+          l3: "Neutral",
+          l4: "Disagree",
+          l5: "Strongly disagree",
+        },
+      },
       dialog: {
         consent: {
           title: "Consent is required.",
@@ -123,6 +137,20 @@ const resources = {
       consent:
         "Ao continuar com esta pesquisa, você confirma que tem pelo menos 18 anos de idade e que concorda em participar. Se você não consentir em participar, saia desta pesquisa ou feche seu navegador.",
       start: "Iniciar experimento",
+      cancel: "Cancelar",
+      part: "Parte",
+      part_a: "Parte A",
+      part_b: "Parte B",
+      part_c: "Parte C",
+      qst: {
+        likert: {
+          l1: "Concordo plenamente",
+          l2: "Concordo",
+          l3: "Neutro",
+          l4: "Discordo",
+          l5: "Discordo plenamente",
+        },
+      },
       dialog: {
         consent: {
           title: "Consentimento requerido.",
