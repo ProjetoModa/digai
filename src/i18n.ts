@@ -28,6 +28,21 @@ const resources = {
         p4: "The questions in this survey seek to identify various aspects of the user's experience, including the quality, accuracy, variety, control, and efficiency of the recommendations provided by the platform, as well as the overall trust and experience of the user. We also collect logs of tool usage, which record each user iteration and the timestamp of each action taken. We do not collect any personal information, only user analytics. We do not collect any information, such as email, that may identify you in any way. Some of the survey questions contain textboxes where you will be asked to type in your own answers. Please note that in order for this survey to be anonymous, you should not include in your answers any information from which you, or other people, could be identified.",
         p5: 'Please click on the "Instructions" button below before proceeding. Then, return to this page, check the "Consent Box" and press the "Start Experiment" button. Thank you for your time.',
       },
+      inter_ab: {
+        title: "END OF PART A",
+        p1: "Please go to Part B of the experiment by clicking on the button below. There you will find the same experiment as before, but with a chatbot. Feel free to use it.",
+        start: "Start Part B",
+      },
+      inter_bc: {
+        title: "We are almost finished",
+        p1: "Part C is rather quick and there will be no more questionnaires. There you will find the same experiment as before, but you must use the chatbot to get recommendations.",
+        start: "Start Part C",
+      },
+      end: {
+        title: "Thank You",
+        p1: "Thank you for your time. You can contact me at andredantas@copin.ufcg.edu.br if you like to receive a copy of the published results.",
+        restart: "Repeat the Experiment for Another Person",
+      },
       instructions: {
         title: "Instructions",
         catalog: {
@@ -125,6 +140,21 @@ const resources = {
         title4: "Que informações serão coletadas?",
         p4: "As perguntas desta pesquisa buscam identificar vários aspectos da experiência do usuário, incluindo a qualidade, precisão, variedade, controle e eficiência das recomendações fornecidas pela plataforma, bem como a confiança e experiência geral do usuário. Também coletamos logs de uso da ferramenta, que registram cada iteração do usuário e o registro de data e hora de cada ação realizada. Não coletamos nenhuma informação pessoal, apenas análises do usuário. Não coletamos nenhuma informação, como e-mail, que possa identificá-lo em qualquer forma. Algumas das perguntas da pesquisa contêm caixas de texto onde você será solicitado a digitar suas próprias respostas. Observe que, para que esta pesquisa seja anônima, você não deve incluir em suas respostas nenhuma informação da qual você ou outras pessoas, podem ser identificados.",
         p5: 'Por favor, clique no botão "Instruções" abaixo antes de prosseguir. Em seguida, retorne a esta página, marque a "Caixa de consentimento" e pressione o botão "Iniciar experimento". Obrigado pelo seu tempo.',
+      },
+      inter_ab: {
+        title: "FIM DA PARTE A",
+        p1: "Vá para a Parte B do experimento clicando no botão abaixo. Lá você encontrará o mesmo experimento de antes, mas com um chatbot. Sinta-se livre para usá-lo.",
+        start: "Iniciar Parte B",
+      },
+      inter_bc: {
+        title: "Estamos quase terminando",
+        p1: "A Parte C é bastante rápida e não haverá mais questionários. Lá você encontrará o mesmo experimento de antes, mas deve usar o chatbot para obter recomendações.",
+        start: "Iniciar Parte C",
+      },
+      end: {
+        title: "Obrigado",
+        p1: "Obrigado pelo seu tempo. Você pode entrar em contato comigo em andredantas@copin.ufcg.edu.br se quiser receber uma cópia dos resultados publicados.",
+        restart: "Repetir a Experiência para Outra Pessoa",
       },
       instructions: {
         title: "Instruções",

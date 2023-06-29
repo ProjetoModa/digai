@@ -2,8 +2,10 @@ import { Box, Button, Container, Divider, Typography } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatbotService from "../services/chatbotService";
+import { useTranslation } from "react-i18next";
 
 export default function InterAB() {
+  const { t } = useTranslation();
   let uuid = useRef<string | null>(null);
   const navigate = useNavigate();
 
@@ -31,13 +33,11 @@ export default function InterAB() {
     >
       <Container>
         <Box component="main" sx={{ textAlign: "center" }}>
-          <Typography variant="h4" sx={{color: "#ffffff"}}>END OF PART A</Typography>
-          <Divider sx={{ margin: 2 }} />
-          <Typography sx={{color: "#fafafa"}}>
-            Please go to Part B of the experiment by
-            clicking on the button below. There you will find the same
-            experiment as before, but with a chatbot. Feel free to use it.
+          <Typography variant="h4" sx={{ color: "#ffffff" }}>
+            {t("inter_ab.title")}
           </Typography>
+          <Divider sx={{ margin: 2 }} />
+          <Typography sx={{ color: "#fafafa" }}>{t("inter_ab.p1")}</Typography>
           <Box
             sx={{
               display: "flex",
@@ -47,7 +47,7 @@ export default function InterAB() {
             }}
           >
             <Button variant="contained" onClick={startPartB}>
-              Start Part B
+              {t("inter_ab.start")}
             </Button>
           </Box>
         </Box>

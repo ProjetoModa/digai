@@ -2,8 +2,10 @@ import { Box, Button, Container, Divider, Typography } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatbotService from "../services/chatbotService";
+import { useTranslation } from "react-i18next";
 
 export default function InterBC() {
+  const { t } = useTranslation();
   let uuid = useRef<string | null>(null);
   const navigate = useNavigate();
 
@@ -31,13 +33,11 @@ export default function InterBC() {
     >
       <Container>
         <Box component="main" sx={{ textAlign: "center" }}>
-          <Typography variant="h4" sx={{color: "#ffffff"}}>We are almost finished</Typography>
-          <Divider sx={{ margin: 2 }} />
-          <Typography sx={{color: "#fafafa"}}>
-             Part C is rather quick and there will be no
-            more questionnaires. There you will find the same
-            experiment as before, but you must use the chatbot to get recommendations.
+          <Typography variant="h4" sx={{ color: "#ffffff" }}>
+            {t("inter_bc.title")}
           </Typography>
+          <Divider sx={{ margin: 2 }} />
+          <Typography sx={{ color: "#fafafa" }}>{t("inter_bc.p1")}</Typography>
           <Box
             sx={{
               display: "flex",
@@ -47,7 +47,7 @@ export default function InterBC() {
             }}
           >
             <Button variant="contained" onClick={startPartC}>
-              Start Part C
+              {t("inter_bc.start")}
             </Button>
           </Box>
         </Box>
