@@ -7,15 +7,66 @@ const resources = {
     translation: {
       title:
         "USER EXPERIENCE IN CLOTHING FASHION E-COMMERCE - EVALUATION EXPERIMENT",
+      title2:
+        "Please, let us know all that you like and dislike, and if you find a skirt that you want to buy, just click in the corresponding shopping cart.",
       consent:
         "By continuing with this survey you confirm that you are at least 18 years of age and that you consent to participate. If you do not consent to participate, please exit this survey or close your browser.",
       start: "Start Experiment",
       cancel: "Cancel",
       part: "Part",
-      part_a: "Part A",
-      part_b: "Part B",
-      part_c: "Part C",
+      finish: "Finish",
+      next: "Next",
+      recommend: "More Skirts Recommendations",
       qst: {
+        title: "Questionnaire",
+        comments1:
+          "You may skip this. But any comments explaining your marks for Part A or B above would help us much.",
+        comments2: "Comments?",
+        sec1: {
+          title: "Concerning the quality or accuracy of the recommendations:",
+          q1: "The recommender provided good recommendations.",
+          q2: "I liked the recommendations provided by the system.",
+          q3: "The recommended skirts fitted my preference.",
+        },
+        sec2: {
+          title: "Concerning the diversity or variety of the recommendations:",
+          q1: "The recommender helped me discover new skirts.",
+          q2: "The skirts that were recommended to me are diverse.",
+          q3: "The list of recommendations included skirts of many different types.",
+        },
+        sec3: {
+          title:
+            "Concerning the control you had on the flow of the recommendations:",
+          q1: "I became familiar with the system very quickly.",
+          q2: "The layout of the recommendations on the screen was adequate",
+          q3: "The recommender allowed me to inform my preference easily",
+          q4: "The recommender helped me decide on subsequent options faster than I would looking at a catalog of skirts",
+        },
+        sec4: {
+          title: "Concerning the effectiveness of the recommendations:",
+          q1: "Using the system is a pleasant experience.",
+          q2: "I made better choices with the recommender.",
+          q3: "I found better items using the recommender.",
+        },
+        sec5: {
+          title: "Concerning the trust you had in the system:",
+          q1: "The recommendations the system made were convincing.",
+          q2: "The recommender made me more confident about my final selection/decision",
+          q3: "I am confident I will like other fashion items the system recommends me in the future",
+          q4: "The recommender can be trusted.",
+        },
+        sec6: {
+          title: "Concerning your overall satisfaction with the system:",
+          q1: "I will use this recommender again.",
+          q2: "I am likely to recommend my friends use fashion e-commerce sites with more efficient recommendation tools.",
+          q3: "Overall, I am satisfied with the recommender.",
+          q4: "The recommender helped me find a skirt I really liked.",
+        },
+        sec7: {
+          title: "Concerning your experience with the system:",
+          q1: "Please enter what you consider the most appropriate description for the application without the chatbot (Part A).",
+          q2: "Please enter what you consider the most appropriate description for the application with the chatbot (Part B).",
+        },
         likert: {
           l1: "Strongly agree",
           l2: "Agree",
@@ -23,11 +74,23 @@ const resources = {
           l4: "Disagree",
           l5: "Strongly disagree",
         },
+        error: {
+          required: "Some required questions are invalid.",
+        },
       },
       dialog: {
         consent: {
           title: "Consent is required.",
           description: "To continue, please check the consent box",
+        },
+        qst: {
+          title: "Confirmation",
+          description: "Are you sure you want to finish the questionnaire?",
+        },
+        finish: {
+          title: "Finish",
+          description:
+            "Are you sure that you found your skirt and want to finish the experiment?",
         },
       },
       home: {
@@ -128,21 +191,87 @@ const resources = {
         straight: "Straight",
         asymetric: "Asymetric",
       },
+      adjectives: {
+        boring: "Boring",
+        motivating: "Motivating",
+        pratical: "Practical",
+        pleasant: "Pleasant",
+        misleading: "Misleading",
+        trustworthy: "Trustworthy",
+        isolating: "Isolating",
+        sociable: "Sociable",
+        machinelike: "Machinelike",
+        humanlike: "Humanlike",
+        artificial: "Artificial",
+        lifelike: "Lifelike",
+        fake: "Fake",
+        natural: "Natural",
+      },
     },
   },
   pt: {
     translation: {
       title:
         "EXPERIÊNCIA DO USUÁRIO EM E-COMMERCE DE MODA - EXPERIMENTO DE AVALIAÇÃO",
+      title2:
+        "Por favor, deixe-nos saber tudo o que você gosta e não gosta, e se encontrar uma saia que deseja comprar, basta clicar no carrinho de compras correspondente.",
       consent:
         "Ao continuar com esta pesquisa, você confirma que tem pelo menos 18 anos de idade e que concorda em participar. Se você não consentir em participar, saia desta pesquisa ou feche seu navegador.",
       start: "Iniciar experimento",
       cancel: "Cancelar",
       part: "Parte",
-      part_a: "Parte A",
-      part_b: "Parte B",
-      part_c: "Parte C",
+      finish: "Terminar",
+      next: "Próximo",
+      recommend: "Mais recomendações de saias",
       qst: {
+        title: "Questionário",
+        comments1:
+          "Você pode pular isso. Mas qualquer comentário que explique suas marcas para a Parte A ou B acima nos ajudaria muito.",
+        comments2: "Comentários?",
+        sec1: {
+          title: "Com relação à qualidade ou precisão das recomendações:",
+          q1: "O recomendador forneceu boas recomendações.",
+          q2: "Gostei das recomendações fornecidas pelo sistema.",
+          q3: "As saias recomendadas encaixavam minha preferência.",
+        },
+        sec2: {
+          title: "Com relação à diversidade ou variedade das recomendações:",
+          q1: "O recomendador me ajudou a descobrir novas saias.",
+          q2: "As saias recomendadas para mim são diversas.",
+          q3: "A lista de recomendações incluía saias de muitos tipos diferentes.",
+        },
+        sec3: {
+          title: "Sobre o controle que você teve no fluxo das recomendações:",
+          q1: "Fiquei familiarizado com o sistema muito rapidamente.",
+          q2: "O layout das recomendações na tela foi adequado",
+          q3: "O recomendador me permitiu informar minha preferência facilmente",
+          q4: "O recomendador me ajudou a decidir sobre as opções subsequentes mais rapidamente do que eu olharia para um catálogo de saias",
+        },
+        sec4: {
+          title: "Sobre a eficácia das recomendações:",
+          q1: "Usar o sistema é uma experiência agradável.",
+          q2: "Fiz melhores escolhas com o recomendador.",
+          q3: "Encontrei itens melhores usando o recomendador.",
+        },
+        sec5: {
+          title: "Sobre a confiança que você tinha no sistema:",
+          q1: "As recomendações que o sistema fez foram convincentes.",
+          q2: "O recomendador me deixou mais confiante sobre minha seleção/decisão final",
+          q3: "Estou confiante de que vou gostar de outros itens de moda que o sistema me recomenda no futuro",
+          q4: "O recomendador pode ser confiável.",
+        },
+        sec6: {
+          title: "Com relação à sua satisfação geral com o sistema:",
+          q1: "Vou usar este recomendador novamente.",
+          q2: "É provável que eu recomendo que meus amigos usem sites de comércio eletrônico de moda com ferramentas de recomendação mais eficientes.",
+          q3: "No geral, estou satisfeito com o recomendador.",
+          q4: "O recomendador me ajudou a encontrar uma saia que eu realmente gostei.",
+        },
+        sec7: {
+          title: "Sobre sua experiência com o sistema:",
+          q1: "Por favor, insira o que você considera a descrição mais apropriada para o aplicativo sem o chatbot (parte A).",
+          q2: "Por favor, insira o que você considera a descrição mais apropriada para o aplicativo com o chatbot (Parte B).",
+        },
         likert: {
           l1: "Concordo plenamente",
           l2: "Concordo",
@@ -150,11 +279,22 @@ const resources = {
           l4: "Discordo",
           l5: "Discordo plenamente",
         },
+        error: {
+          required: "Algumas perguntas necessárias são inválidas.",
+        },
       },
       dialog: {
         consent: {
           title: "Consentimento requerido.",
           description: "Para continuar, por favor, aceite os termos.",
+        },
+        qst: {
+          title: "Confirmação",
+          description: "Tem certeza de que deseja terminar o questionário?",
+        },
+        finish: {
+          title: "Terminar",
+          description: "Tem certeza de que encontrou sua saia e deseja terminar o experimento?",
         },
       },
       home: {
@@ -254,6 +394,22 @@ const resources = {
         pleated: "Plissada (Dobras ou Ondas)",
         straight: "Reta",
         asymetric: "Assimétrica",
+      },
+      adjectives: {
+        boring: "Tedioso",
+        motivating: "Motivador",
+        pratical: "Prático",
+        pleasant: "Prazeroso",
+        misleading: "Errôneo",
+        trustworthy: "Confiável",
+        isolating: "Reservado",
+        sociable: "Sociável",
+        machinelike: "Máquina",
+        humanlike: "Humano",
+        artificial: "Artificial",
+        lifelike: "Realista",
+        fake: "Falso",
+        natural: "Natural",
       },
     },
   },

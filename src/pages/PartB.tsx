@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import RecommenderService from "../services/recommenderService";
 import ChatbotService from "../services/chatbotService";
 import PromptDialog from "../components/PromptDialog";
+import { useTranslation } from "react-i18next";
 
 export default function PartB() {
+  const { t } = useTranslation();
   let uuid = useRef<string | null>(null);
   let productSelected = useRef<string | null>(null);
   const moreRecommendationsRef = useRef<HTMLDivElement>();
@@ -110,11 +112,7 @@ export default function PartB() {
     <Box component="main">
       <Box component="header" className="header" sx={{ textAlign: "center" }}>
         <Container sx={{ padding: 4 }}>
-          <Typography variant="h5">
-            Please, let us know all that you like and dislike, and if you find a
-            skirt that you want to buy, just click in the corresponding shopping
-            cart.
-          </Typography>
+          <Typography variant="h5">{t("title2")}</Typography>
         </Container>
       </Box>
       <Container>
@@ -155,9 +153,8 @@ export default function PartB() {
                       productSelected.current = item;
                       setDialog({
                         open: true,
-                        title: "Finish",
-                        description:
-                          "Are you sure that you found your skirt and want to finish the experiment?",
+                        title: t("dialog.finish.title"),
+                        description: t("dialog.finish.description"),
                       });
                     }}
                     id={item}
@@ -176,7 +173,7 @@ export default function PartB() {
                   getRecommendations();
                 }}
               >
-                More Skirts Recommendations
+                {t("recommend")}
               </Button>
             </Box>
           </Grid>

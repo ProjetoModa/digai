@@ -94,7 +94,7 @@ export default function Likert({
             <TableBody>
               <StyledTableRow>
                 <StyledTableCell sx={{ width: "16%" }}>
-                  {t("part_a")}
+                  {t("part")} A
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
@@ -144,7 +144,7 @@ export default function Likert({
               </StyledTableRow>
               <StyledTableRow>
                 <StyledTableCell sx={{ width: "16%" }}>
-                  {t("part_b")}
+                  {t("part")} B
                 </StyledTableCell>
                 <StyledTableCell sx={{ width: "16%" }}>
                   <Radio
