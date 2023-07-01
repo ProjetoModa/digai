@@ -263,7 +263,7 @@ const resources = {
         sec6: {
           title: "Com relação à sua satisfação geral com o sistema:",
           q1: "Vou usar este recomendador novamente.",
-          q2: "É provável que eu recomendo que meus amigos usem sites de comércio eletrônico de moda com ferramentas de recomendação mais eficientes.",
+          q2: "É provável que eu recomende que meus amigos usem sites de comércio eletrônico de moda com ferramentas de recomendação mais eficientes.",
           q3: "No geral, estou satisfeito com o recomendador.",
           q4: "O recomendador me ajudou a encontrar uma saia que eu realmente gostei.",
         },
