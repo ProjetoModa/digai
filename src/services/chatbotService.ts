@@ -16,10 +16,10 @@ const ChatbotService = {
     });
   },
 
-  chat: async (id: string, utterance: string) => {
+  chat: async (id: string, utterance: string, lang: string) => {
     return await api(chatbotURL + "/chat", {
       method: "POST",
-      body: JSON.stringify({ id, utterance }),
+      body: JSON.stringify({ id, utterance, lang }),
     });
   },
   like: async (id: string, product: string) => {

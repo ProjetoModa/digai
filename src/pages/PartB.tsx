@@ -9,7 +9,7 @@ import PromptDialog from "../components/PromptDialog";
 import { useTranslation } from "react-i18next";
 
 export default function PartB() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   let uuid = useRef<string | null>(null);
   let productSelected = useRef<string | null>(null);
   const moreRecommendationsRef = useRef<HTMLDivElement>();
@@ -32,7 +32,7 @@ export default function PartB() {
     });
   };
   const sendMessage = (utterance: string) => {
-    ChatbotService.chat(uuid.current!, utterance).then((result) => {
+    ChatbotService.chat(uuid.current!, utterance, i18n.resolvedLanguage || "en").then((result) => {
       setState((_: any) => {
         localStorage.setItem("state", JSON.stringify(result.state));
         return result.state;
