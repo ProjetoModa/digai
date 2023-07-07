@@ -19,7 +19,7 @@ export default function Text({
   invalid,
 }: TextProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(id, event.target.value.trim());
+    onChange(id, event.target.value);
   };
   return (
     <Card sx={{ margin: 2 }}>
