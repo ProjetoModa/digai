@@ -194,7 +194,7 @@ const resources = {
       adjectives: {
         boring: "Boring",
         motivating: "Motivating",
-        pratical: "Practical",
+        practical: "Practical",
         pleasant: "Pleasant",
         misleading: "Misleading",
         trustworthy: "Trustworthy",
@@ -398,7 +398,7 @@ const resources = {
       adjectives: {
         boring: "Tedioso",
         motivating: "Motivador",
-        pratical: "Prático",
+        practical: "Prático",
         pleasant: "Prazeroso",
         misleading: "Errôneo",
         trustworthy: "Confiável",
