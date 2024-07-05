@@ -14,6 +14,7 @@ import End from "./pages/End.tsx";
 import Questions from "./pages/Questions.tsx";
 import Instructions from "./pages/Instructions.tsx";
 import "./i18n";
+import Terms from "./pages/Terms.tsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/instructions",
     element: <Instructions />,
+  },
+  {
+    path: "/terms",
+    element: <Terms />,
   },
 ]);
 

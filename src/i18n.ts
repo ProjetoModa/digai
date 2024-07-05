@@ -10,7 +10,8 @@ const resources = {
       title2:
         "Please, let us know all that you like and dislike, and if you find a skirt that you want to buy, just click in the corresponding shopping cart.",
       consent:
-        "By continuing with this survey you confirm that you are at least 18 years of age and that you consent to participate. If you do not consent to participate, please exit this survey or close your browser.",
+        "By continuing with this survey you confirm that you are at least 18 years of age and that you consent to participate. You can view the full terms of the experiment ",
+      here: "here",
       start: "Start Experiment",
       cancel: "Cancel",
       part: "Part",
@@ -94,6 +95,11 @@ const resources = {
         },
       },
       home: {
+        welcome: "We are a collaborative project between the Federal University of Campina Grande in Brazil and the University of Southampton. We invite you to participate in our chatbot experiment. Your contribution is essential for our research.",
+        thanks: 'Please note that this initial version of the experiment is not compatible with mobile devices. Completing all the questions should take approximately 20 minutes. You can pause between scenarios; just make sure to use the same computer and browser to resume where you left off. Your understanding and participation are greatly appreciated.',
+        goal: 'Your goal is to find a striped mid-size skirt that you like and would "buy". To simulate your buying action and end the experiment you click on the 🛒 (shopping cart) button.',
+      },
+      terms: {
         title1: "What is the research about?",
         p1: "I am André Landim, a Computer Science Master’s student at the Federal University of Campina Grande (UFCG) in collaboration with the Federal University of Alagoas (UFAL) in Brazil. We would like to invite you to participate in a study regarding chatbot and recommender system for fashion e-commerce. This study was approved by the Ethics Committee at UFAL (CAAE 43950621.4.0000.5013).",
         title2: "What will happen to me if I take part?",
@@ -103,7 +109,6 @@ const resources = {
         p3: 'In the experiment you will find a list of skirts to choose. No personal information will be collected, only your interactions with the website via clicks. Your goal is to find a striped mid-size skirt that you like and would "buy". To simulate your buying action and end the experiment you click on the 🛒 (shopping cart) button. The website interaction will take place in three parts. In Part A recommendations are made to you without the assistance of a chatbot; in Part B, you may use a chatbot after an initial, random set of skirt suggestions; and, in Part C you ask the chatbot to make an initial set of skirt suggestions. This website interaction will help us understand the effectiveness of the chatbot in context.',
         title4: "What information will be collected?",
         p4: "The questions in this survey seek to identify various aspects of the user's experience, including the quality, accuracy, variety, control, and efficiency of the recommendations provided by the platform, as well as the overall trust and experience of the user. We also collect logs of tool usage, which record each user iteration and the timestamp of each action taken. We do not collect any personal information, only user analytics. We do not collect any information, such as email, that may identify you in any way. Some of the survey questions contain textboxes where you will be asked to type in your own answers. Please note that in order for this survey to be anonymous, you should not include in your answers any information from which you, or other people, could be identified.",
-        p5: 'Please click on the "Instructions" button below before proceeding. Then, return to this page, check the "Consent Box" and press the "Start Experiment" button. Thank you for your time.',
       },
       inter_ab: {
         title: "END OF PART A",
@@ -216,7 +221,8 @@ const resources = {
       title2:
         "Por favor, deixe-nos saber tudo o que você gosta e não gosta, e se encontrar uma saia que deseja comprar, basta clicar no carrinho de compras correspondente.",
       consent:
-        "Ao continuar com esta pesquisa, você confirma que tem pelo menos 18 anos de idade e que concorda em participar. Se você não consentir em participar, saia desta pesquisa ou feche seu navegador.",
+        "Ao continuar com esta pesquisa, você confirma que tem pelo menos 18 anos de idade e que concorda em participar. Você pode visualizar os termos completos do experimento",
+      here:"aqui",
       start: "Iniciar experimento",
       cancel: "Cancelar",
       part: "Parte",
@@ -298,6 +304,11 @@ const resources = {
         },
       },
       home: {
+        welcome: "Somos um projeto colaborativo entre a Universidade Federal de Campina Grande no Brasil e a Universidade de Southampton. Convidamos você a participar do nosso experimento com chatbot. Sua contribuição é essencial para nossa pesquisa.",
+        thanks: 'Por favor, note que esta versão inicial do experimento não funciona em dispositivos móveis. O tempo estimado para responder a todas as perguntas é de cerca de 20 minutos. Você pode pausar entre os cenários, mas certifique-se de usar o mesmo computador e navegador para retomar de onde parou. Agradecemos muito sua compreensão e participação.',
+        goal: 'Seu objetivo é encontrar uma saia listrada tamanho médio que você goste e que "compraria". Para simular sua ação de compra e finalizar a experiência, clique no botão 🛒 (carrinho de compras).',
+      },
+      terms:{
         title1: "Sobre o que é a pesquisa?",
         p1: "Sou André Landim, aluno de Mestrado em Ciência da Computação na Universidade Federal de Campina Grande (UFCG) em colaboração com a Universidade Federal de Alagoas (UFAL) no Brasil. Gostaríamos de convidá-lo a participar de um estudo sobre chatbot e sistema de recomendação para e-commerce de moda. Este estudo foi aprovado pelo Comitê de Ética da UFAL (CAAE 43950621.4.0000.5013).",
         title2: "O que vai acontecer comigo se eu participar?",
@@ -307,7 +318,6 @@ const resources = {
         p3: 'No experimento você encontrará uma lista de saias para escolher. Nenhuma informação pessoal será coletada, apenas suas interações com o site por meio de cliques. Seu objetivo é encontrar uma saia listrada tamanho médio que você goste e que "compraria". Para simular sua ação de compra e finalizar a experiência, clique no botão 🛒 (carrinho de compras). A interação no site ocorrerá em três partes. Na Parte A, as recomendações são feitas a você sem a ajuda de um chatbot; na Parte B , você pode usar um chatbot após um conjunto inicial aleatório de sugestões de saias; e, na Parte C, você pede ao chatbot para fazer um conjunto inicial de sugestões de saias. Essa interação no site nos ajudará a entender a eficácia do chatbot no contexto.',
         title4: "Que informações serão coletadas?",
         p4: "As perguntas desta pesquisa buscam identificar vários aspectos da experiência do usuário, incluindo a qualidade, precisão, variedade, controle e eficiência das recomendações fornecidas pela plataforma, bem como a confiança e experiência geral do usuário. Também coletamos logs de uso da ferramenta, que registram cada iteração do usuário e o registro de data e hora de cada ação realizada. Não coletamos nenhuma informação pessoal, apenas análises do usuário. Não coletamos nenhuma informação, como e-mail, que possa identificá-lo em qualquer forma. Algumas das perguntas da pesquisa contêm caixas de texto onde você será solicitado a digitar suas próprias respostas. Observe que, para que esta pesquisa seja anônima, você não deve incluir em suas respostas nenhuma informação da qual você ou outras pessoas, podem ser identificados.",
-        p5: 'Por favor, clique no botão "Instruções" abaixo antes de prosseguir. Em seguida, retorne a esta página, marque a "Caixa de consentimento" e pressione o botão "Iniciar experimento". Obrigado pelo seu tempo.',
       },
       inter_ab: {
         title: "FIM DA PARTE A",

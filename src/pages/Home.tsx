@@ -83,30 +83,21 @@ export default function Home() {
             />
           </Box>
           <Divider sx={{ margin: 2 }} />
-          <Typography variant="h5" sx={{ color: "#ffffff" }}>
-            {t("home.title1")}
-          </Typography>
-          <Typography sx={{ color: "#fafafa" }}>{t("home.p1")}</Typography>
-          <Typography variant="h5" sx={{ color: "#ffffff", mt: 2 }}>
-            {t("home.title2")}
-          </Typography>
-          <Typography sx={{ color: "#fafafa" }}>{t("home.p2")}</Typography>
-
-          <Typography variant="h5" sx={{ color: "#ffffff", mt: 2 }}>
-            {t("home.title3")}
-          </Typography>
-          <Typography sx={{ color: "#fafafa" }}>{t("home.p3")}</Typography>
-
-          <Typography variant="h5" sx={{ color: "#ffffff", mt: 2 }}>
-            {t("home.title4")}
-          </Typography>
-          <Typography sx={{ color: "#fafafa" }}>{t("home.p4")}</Typography>
-          <Typography sx={{ color: "#fafafa" }}>{t("home.p5")}</Typography>
+          <Typography sx={{ color: "#fafafa" }}>{t("home.welcome")}</Typography>
+          <Typography sx={{ color: "#fafafa" }}>{t("home.thanks")}</Typography>
+          <Typography sx={{ color: "#fafafa" }}>{t("home.goal")}</Typography>
 
           <FormControlLabel
             sx={{ margin: 2, color: "#ffffff" }}
             control={<Checkbox checked={consent} onChange={handleChange} />}
-            label={t("consent")}
+            label={
+              <>
+                {t("consent")}
+                <Link style={{color: "#fafafa"}} to="/terms" target="_blank">
+                  {t("here")}
+                </Link>
+              </>
+            }
           />
 
           <AlertDialog
