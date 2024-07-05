@@ -9,6 +9,7 @@ const resources = {
         "USER EXPERIENCE IN CLOTHING FASHION E-COMMERCE - EVALUATION EXPERIMENT",
       title2:
         "Please, let us know all that you like and dislike, and if you find a skirt that you want to buy, just click in the corresponding shopping cart.",
+      use_chatbot: "Please feel free to use the chatbot",
       consent:
         "By continuing with this survey you confirm that you are at least 18 years of age and that you consent to participate. You can view the full terms of the experiment ",
       here: "here",
@@ -220,6 +221,7 @@ const resources = {
         "EXPERIÊNCIA DO USUÁRIO EM E-COMMERCE DE MODA - EXPERIMENTO DE AVALIAÇÃO",
       title2:
         "Por favor, deixe-nos saber tudo o que você gosta e não gosta, e se encontrar uma saia que deseja comprar, basta clicar no carrinho de compras correspondente.",
+      use_chatbot: "Por favor, use o chatbot",
       consent:
         "Ao continuar com esta pesquisa, você confirma que tem pelo menos 18 anos de idade e que concorda em participar. Você pode visualizar os termos completos do experimento",
       here:"aqui",

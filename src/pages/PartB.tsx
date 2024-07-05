@@ -113,6 +113,7 @@ export default function PartB() {
       <Box component="header" className="header" sx={{ textAlign: "center" }}>
         <Container sx={{ padding: 4 }}>
           <Typography variant="h5">{t("title2")}</Typography>
+          <Typography sx={{color: "#fafafa"}} variant="h6">{t("use_chatbot")}</Typography>
         </Container>
       </Box>
       <Container>
