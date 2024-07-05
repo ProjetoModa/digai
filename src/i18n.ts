@@ -95,8 +95,8 @@ const resources = {
         },
       },
       home: {
-        welcome: "We are a collaborative project between the Federal University of Campina Grande in Brazil and the University of Southampton. We invite you to participate in our chatbot experiment. Your contribution is essential for our research.",
-        thanks: 'Please note that this initial version of the experiment is not compatible with mobile devices. Completing all the questions should take approximately 20 minutes. You can pause between scenarios; just make sure to use the same computer and browser to resume where you left off. Your understanding and participation are greatly appreciated.',
+        welcome: "We are a collaborative project between the Federal University of Campina Grande and the Federal University of Alagoas in Brazil. We invite you to participate in our chatbot experiment. Your contribution is essential for our research.",
+        thanks: 'Please note that this initial version of the experiment is not compatible with mobile devices. Completing all the questions should take approximately 10 minutes. You can pause between scenarios; just make sure to use the same computer and browser to resume where you left off. Your understanding and participation are greatly appreciated.',
         goal: 'Your goal is to find a striped mid-size skirt that you like and would "buy". To simulate your buying action and end the experiment you click on the 🛒 (shopping cart) button.',
       },
       terms: {
@@ -304,8 +304,8 @@ const resources = {
         },
       },
       home: {
-        welcome: "Somos um projeto colaborativo entre a Universidade Federal de Campina Grande no Brasil e a Universidade de Southampton. Convidamos você a participar do nosso experimento com chatbot. Sua contribuição é essencial para nossa pesquisa.",
-        thanks: 'Por favor, note que esta versão inicial do experimento não funciona em dispositivos móveis. O tempo estimado para responder a todas as perguntas é de cerca de 20 minutos. Você pode pausar entre os cenários, mas certifique-se de usar o mesmo computador e navegador para retomar de onde parou. Agradecemos muito sua compreensão e participação.',
+        welcome: "Somos um projeto colaborativo entre a Universidade Federal de Campina Grande e a Universidade Federal de Alagoas no Brasil. Convidamos você a participar do nosso experimento com chatbot. Sua contribuição é essencial para nossa pesquisa.",
+        thanks: 'Por favor, note que esta versão inicial do experimento não funciona em dispositivos móveis. O tempo estimado para responder a todas as perguntas é de cerca de 10 minutos. Você pode pausar entre os cenários, mas certifique-se de usar o mesmo computador e navegador para retomar de onde parou. Agradecemos muito sua compreensão e participação.',
         goal: 'Seu objetivo é encontrar uma saia listrada tamanho médio que você goste e que "compraria". Para simular sua ação de compra e finalizar a experiência, clique no botão 🛒 (carrinho de compras).',
       },
       terms:{
