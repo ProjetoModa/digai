@@ -124,6 +124,7 @@ const resources = {
       end: {
         title: "Thank You",
         p1: "Thank you for your time. You can contact me at andredantas@copin.ufcg.edu.br if you like to receive a copy of the published results.",
+        prolific: "Your completion code is: CUC9RQT8",
         restart: "Repeat the Experiment for Another Person",
       },
       instructions: {
@@ -329,6 +330,7 @@ const resources = {
       inter_bc: {
         title: "Estamos quase terminando",
         p1: "A Parte C é bastante rápida e não haverá mais questionários. Lá você encontrará o mesmo experimento de antes, mas deve usar o chatbot para obter recomendações.",
+        prolific: "Seu código de conclusão é: CUC9RQT8",
         start: "Iniciar Parte C",
       },
       end: {

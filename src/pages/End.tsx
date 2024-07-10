@@ -1,13 +1,18 @@
 import { Box, Button, Container, Divider, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function End() {
   const { t } = useTranslation();
-  useEffect(() => {
+  const navigate = useNavigate();
+  const prolific = localStorage.getItem("prolific");
+
+  const restart = () => {
     localStorage.clear();
-  }, []);
+    navigate("/");
+  };
+  useEffect(() => {}, []);
   return (
     <Box
       className="background"
@@ -25,6 +30,11 @@ export default function End() {
           </Typography>
           <Divider sx={{ margin: 2 }} />
           <Typography sx={{ color: "#fafafa" }}>{t("end.p1")}</Typography>
+          {prolific && (
+            <Typography sx={{ color: "#fafafa" }}>
+              {t("end.prolific")}
+            </Typography>
+          )}
           <Box
             sx={{
               display: "flex",
@@ -33,7 +43,7 @@ export default function End() {
               gap: 2,
             }}
           >
-            <Button variant="contained" component={Link} to={"/"}>
+            <Button variant="contained" onClick={restart}>
               {t("end.restart")}
             </Button>
           </Box>

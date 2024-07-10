@@ -43,6 +43,7 @@ export default function Home() {
       const session = await ChatbotService.navigate(uuid, "/part-a");
       localStorage.setItem("uuid", uuid);
       localStorage.setItem("state", session.state);
+      localStorage.setItem("prolific", prolific.value);
       navigate("/part-a");
     }
   };
