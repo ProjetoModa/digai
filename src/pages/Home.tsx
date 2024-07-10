@@ -5,6 +5,7 @@ import {
   Container,
   Divider,
   FormControlLabel,
+  TextField,
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -37,7 +38,8 @@ export default function Home() {
       });
     } else {
       const uuid = uuidv4();
-      await ChatbotService.init(uuid);
+      const prolific = document.getElementById("prolific-id") as HTMLInputElement;
+      await ChatbotService.init(uuid, prolific.value);
       const session = await ChatbotService.navigate(uuid, "/part-a");
       localStorage.setItem("uuid", uuid);
       localStorage.setItem("state", session.state);
@@ -99,6 +101,7 @@ export default function Home() {
               </>
             }
           />
+          <TextField id="prolific-id" label="Prolific ID (optional)" variant="outlined" className="white-border"  />
 
           <AlertDialog
             open={dialog.open}

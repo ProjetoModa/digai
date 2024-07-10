@@ -14,3 +14,10 @@
 .header {
   background: rgba(160, 92, 69, 0.8);
 }
+
+.white-border .MuiFormLabel-root,
+.white-border fieldset,
+.white-border .MuiInputBase-root {
+  color: #fafafa;
+  border-color: #fafafa;
+}

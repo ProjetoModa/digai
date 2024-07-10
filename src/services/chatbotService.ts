@@ -3,10 +3,10 @@ import api from "./api";
 const chatbotURL = import.meta.env.VITE_CHATBOT_API;
 
 const ChatbotService = {
-  init: async (id: string) => {
+  init: async (id: string, prolific: string) => {
     return await api(chatbotURL + "/init", {
       method: "POST",
-      body: JSON.stringify({ id: id }),
+      body: JSON.stringify({ id, prolific }),
     });
   },
   navigate: async (id: string, page: string) => {
